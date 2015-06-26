@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="medium-12 medium-centered columns text centered">
+    <h1> Available Backpacks</h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="medium-12 medium-centered columns">
+    <table>
+      <tbody>
+        <% @backpacks.each do |backpack| %>
+        <tr>
+          <td> <%= link_to backpack.name, backpack %> </td>
+          <td> <%= backpack.user.email %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
