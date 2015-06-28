@@ -15,10 +15,8 @@
  *= require foundation_and_overrides
 
  */
- #title_centered {
-   text-align: center;
- }
-
 body {
-  background-image: url(/assets/hiker.jpg);
+  background-image: url(/assets/hiker2.jpg);
+  background-repeat: no-repeat;
+  background-size: 100% auto;
 }

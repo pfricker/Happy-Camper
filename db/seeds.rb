@@ -9,6 +9,8 @@
 end
 puts "#{User.all.count} users were generated"
 
+conditions = ["New", "Like New", "Very Good", "Good", "Acceptable", "Seen Better Days"]
+
 packs = [
   ["Atmos AG 65", "Osprey", 65, "mens"],
   ["Atmos AG 50", "Osprey", 50, "mens"],
@@ -49,10 +51,70 @@ packs = [
 ]
 
 packs.each do |pack|
-  condition = ["New", "Like New", "Very Good", "Good", "Acceptable", "Seen Better Days"].sample
+  condition = conditions.sample
   size = ["XS", "S", "M", "L", "XL"].sample
   user = User.all.sample
   Backpack.create!(user_id: user.id, name: pack[0], brand: pack[1], capacity: pack[2], size: size, condition: condition, gender: pack[3])
 end
 
 puts "#{Backpack.all.count} packs were created"
+
+
+tents = [
+  ["Scout UL2", "Big Agnes", "2 person", "Ultra Light"],
+  ["Fly Creek UL1", "Big Agnes", "1 person", "Ultra Light"],
+  ["Fly Creek UL2", "Big Agnes", "2 person", "Ultra Light"],
+  ["Fly Creek UL3", "Big Agnes", "3 person", "Ultra Light"],
+  ["Copper Spur UL1", "Big Agnes", "1 person", "Ultra Light"],
+  ["Copper Spur UL2", "Big Agnes", "2 person", "Ultra Light"],
+  ["Copper Spur UL3", "Big Agnes", "3 person", "Ultra Light"],
+  ["Copper Spur UL4", "Big Agnes", "4 person", "Ultra Light"],
+  ["Three Island UL2", "Big Agnes", "2 person", "Ultra Light"],
+  ["Blacktail 2", "Big Agnes", "2 person", "Backpacking"],
+  ["Blacktail 3", "Big Agnes", "3 person", "Backpacking"],
+  ["Foidel Canyon 2", "Big Agnes", "2 person", "Backpacking"],
+  ["Foidel Canyon 3", "Big Agnes", "3 person", "Backpacking"],
+  ["Tumble 2 mtnGLO", "Big Agnes", "2 person", "Backpacking"],
+  ["Shield 2", "Big Agnes", "2 person", "Mountaineering"],
+  ["Battle Mountain 2", "Big Agnes", "2 person", "Mountaineering"],
+  ["Battle Mountain 3", "Big Agnes", "3 person", "Mountaineering"],
+  ["Rabbit Ears 4", "Big Agnes", "4 person", "Car/Base Camping"],
+  ["Flying Diamond 6", "Big Agnes", "6 person", "Car/Base Camping"],
+  ["Flying Diamond 8", "Big Agnes", "8 person", "Car/Base Camping"],
+  ["Tensleep Station 4", "Big Agnes", "4 person", "Car/Base Camping"],
+  ["Tensleep Station 6", "Big Agnes", "6 person", "Car/Base Camping"],
+  ["Big House 4", "Big Agnes", "4 person", "Car/Base Camping"],
+  ["Big House 6", "Big Agnes", "6 person", "Car/Base Camping"],
+  ["Chimney Creek 6 mtnGlo", "Big Agnes", "6 person", "Car/Base Camping"],
+  ["Gilpin Falls Powerhouse 4 mtnGLO", "Big Agnes", "4 person", "Car/Base Camping"],
+  ["Wyoming Trail 4", "Big Agnes", "4 person", "Car/Base Camping"],
+  ["Skyledge 2", "Mountain Hardwear", "2 person", "Ultra Light"],
+  ["SuperMegaUL 1", "Mountain Hardwear", "1 person", "Ultra Light"],
+  ["SuperMegaUL 1", "Mountain Hardwear", "1 person", "Ultra Light"],
+  ["Shifter 3", "Mountain Hardwear", "3 person", "Backpacking"],
+  ["Shifter 2", "Mountain Hardwear", "2 person", "Backpacking"],
+  ["Skyledge 2", "Mountain Hardwear", "2 person", "Ultra Light"],
+  ["Trango 2", "Mountain Hardwear", "2 person", "Mountaineering"],
+  ["Trango 3", "Mountain Hardwear", "3 person", "Mountaineering"],
+  ["EV 2", "Mountain Hardwear", "2 person", "Mountaineering"],
+  ["EV 3", "Mountain Hardwear", "3 person", "Mountaineering"],
+  ["Hubba Hubba NX", "MSR", "2 person", "Backpacking"],
+  ["Mutha Hubba NX", "MSR", "3 person", "Backpacking"],
+  ["Papa Hubba NX", "MSR", "4 person", "Backpacking"],
+  ["Elixir 2", "MSR", "2 person", "Backpacking"],
+  ["Elixir 3", "MSR", "3 person", "Backpacking"],
+  ["Carbon Reflex 1", "MSR", "1 person", "Ultra Light"],
+  ["Carbon Reflex 2", "MSR", "2 person", "Ultra Light"],
+  ["Carbon Reflex 3", "MSR", "3 person", "Ultra Light"],
+  ["Backcountry Barn Basecamp", "MSR", "5 person", "Car/Base Camping"],
+  ["Fury", "MSR", "2 person", "Mountaineering"],
+  ["Stormking", "MSR", "5 person", "Mountaineering"],
+
+]
+
+
+tents.each do |tent|
+  condition = conditions.sample
+  user = User.all.sample
+  Tent.create!(user_id: user.id, name: tent[0], brand: tent[1], capacity: tent[2], type: tent[3], condition: condtion)
+end
