@@ -6,15 +6,10 @@
 
 <div class="row">
   <div class="medium-12 medium-centered columns">
-    <table>
-      <tbody>
-        <% @tents.each do |tent| %>
-        <tr>
-          <td> <%= link_to tent.name, tent %> </td>
-          <td> <%= tent.user.username %></td>
-        </tr>
-        <% end %>
-      </tbody>
-    </table>
+    <ul>
+      <% @tents.each do |tent| %>
+        <li> <%= link_to tent.name, tent %> : <%= tent.user.username %></li>
+      <% end %>
+    </ul>
   </div>
 </div>

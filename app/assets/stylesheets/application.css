@@ -20,3 +20,7 @@ body {
   background-repeat: no-repeat;
   background-size: 100% auto;
 }
+
+li {
+  list-style-type: none;
+}

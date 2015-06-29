@@ -1,11 +1,11 @@
-30.times do
+100.times do
   email = Faker::Internet.safe_email
   password = Faker::Internet.password
   username = Faker::Internet.user_name
   first_name = Faker::Name.first_name
   last_name = Faker::Name.last_name
 
-  User.create!(email: email, password: password, username: username, first_name: first_name, last_name: last_name)
+  User.create(email: email, password: password, username: username, first_name: first_name, last_name: last_name)
 end
 puts "#{User.all.count} users were generated"
 
@@ -108,13 +108,14 @@ tents = [
   ["Carbon Reflex 3", "MSR", "3 person", "Ultra Light"],
   ["Backcountry Barn Basecamp", "MSR", "5 person", "Car/Base Camping"],
   ["Fury", "MSR", "2 person", "Mountaineering"],
-  ["Stormking", "MSR", "5 person", "Mountaineering"],
-
+  ["Stormking", "MSR", "5 person", "Mountaineering"]
 ]
 
 
 tents.each do |tent|
   condition = conditions.sample
   user = User.all.sample
-  Tent.create!(user_id: user.id, name: tent[0], brand: tent[1], capacity: tent[2], type: tent[3], condition: condtion)
+  Tent.create!(user_id: user.id, name: tent[0], brand: tent[1], capacity: tent[2], use: tent[3], condition: condition)
 end
+
+puts "#{Tent.all.count} tents were created"

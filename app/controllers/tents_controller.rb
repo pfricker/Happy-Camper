@@ -1,4 +1,4 @@
-class BackpacksController < ApplicationController
+class TentsController < ApplicationController
   def index
     @tents = Tent.all
   end
