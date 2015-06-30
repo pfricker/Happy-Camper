@@ -119,3 +119,47 @@ tents.each do |tent|
 end
 
 puts "#{Tent.all.count} tents were created"
+
+
+bags = [
+  ["Trestles 30", "Marmot", 30, "Synthetic"],
+  ["Trestles 15", "Marmot", 15, "Synthetic"],
+  ["Sunset 20", "Marmot", 20, "Synthetic"],
+  ["NanoWave 45", "Marmot", 45, "Synthetic"],
+  ["Cloudbreak 30", "Marmot", 30, "Synthetic"],
+  ["Cloudbreak 0", "Marmot", 0, "Synthetic"],
+  ["Always Summer", "Marmot", 40, "Down"],
+  ["Never Winter", "Marmot", 30, "Down"],
+  ["Atom", "Marmot", 40, "Down"],
+  ["Col MemBrain", "Marmot", -20, "Down"],
+  ["Never Summer", "Marmot", 0, "Down"],
+  ["Plasma 40", "Marmot", 40, "Down"],
+  ["Plasma 15", "Marmot", 15, "Down"],
+  ["Plasma 30", "Marmot", 30, "Down"],
+  ["Lithium", "Marmot", 0, "Down"],
+  ["Spectre", "Mountain Hardwear", 20, "Down"],
+  ["Phantom 15", "Mountain Hardwear", 15, "Down"],
+  ["Phantom 0", "Mountain Hardwear", 0, "Down"],
+  ["Womens Heratio 32", "Mountain Hardwear", 32, "Down"],
+  ["Womens Phantasia", "Mountain Hardwear", 32, "Down"],
+  ["Ratio 32", "Mountain Hardwear", 32, "Down"],
+  ["Ratio 45", "Mountain Hardwear", 45, "Down"],
+  ["Wraith", "Mountain Hardwear", 0, "Down"],
+  ["Womens Phantasia 0", "Mountain Hardwear", 0, "Down"],
+  ["Mtn Speed 32", "Mountain Hardwear", 32, "Down"],
+  ["Womens Laminina 20", "Mountain Hardwear", 20, "Synthetic"],
+  ["Mens Lamina 35", "Mountain Hardwear", 35, "Synthetic"],
+  ["Womens Laminina 35", "Mountain Hardwear", 35, "Synthetic"],
+  ["Mens Lamina 45", "Mountain Hardwear", 45, "Synthetic"],
+  ["Mens Lamina 20", "Mountain Hardwear", 20, "Synthetic"]
+]
+
+bags.each do |bag|
+  user = User.all.sample
+  size = ["Womens", "Reg", "Long"].sample
+  condition = conditions.sample
+
+  Sleepingbag.create!(user_id: user.id, name: bag[0], brand: bag[1], temp_rating: bag[2], size: size, condition: condition, fill: bag[3])
+end
+
+puts "#{Sleepingbag.all.count} sleepingbags were created"

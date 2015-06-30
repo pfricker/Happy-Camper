@@ -1,0 +1,15 @@
+<div class="row">
+  <div class="medium-12 medium-centered columns text centered">
+    <h1> AVAILABLE SLEEPINGBAGS</h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="medium-12 medium-centered columns">
+    <ul>
+      <% @sleepingbags.each do |sleepingbag| %>
+        <li> <%= link_to sleepingbag.name, sleepingbag %> : <%= sleepingbag.user.username %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>
