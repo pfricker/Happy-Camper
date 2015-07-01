@@ -9,7 +9,9 @@
 end
 puts "#{User.all.count} users were generated"
 
-conditions = ["New", "Like New", "Very Good", "Good", "Acceptable", "Seen Better Days"]
+condition = ["New", "Like New", "Very Good", "Good", "Acceptable", "Seen Better Days"].sample
+pack_size = ["XS", "S", "M", "L", "XL"].sample
+bag_size = ["Womens", "Reg", "Long"].sample
 
 packs = [
   ["Atmos AG 65", "Osprey", 65, "mens"],
@@ -49,16 +51,6 @@ packs = [
   ["Altra 62", "Arc'Teryx", 62, "womens"],
   ["Alpha 45", "Arc'Teryx", 45]
 ]
-
-packs.each do |pack|
-  condition = conditions.sample
-  size = ["XS", "S", "M", "L", "XL"].sample
-  user = User.all.sample
-  Backpack.create!(user_id: user.id, name: pack[0], brand: pack[1], capacity: pack[2], size: size, condition: condition, gender: pack[3])
-end
-
-puts "#{Backpack.all.count} packs were created"
-
 
 tents = [
   ["Scout UL2", "Big Agnes", "2 person", "Ultra Light"],
@@ -111,16 +103,6 @@ tents = [
   ["Stormking", "MSR", "5 person", "Mountaineering"]
 ]
 
-
-tents.each do |tent|
-  condition = conditions.sample
-  user = User.all.sample
-  Tent.create!(user_id: user.id, name: tent[0], brand: tent[1], capacity: tent[2], use: tent[3], condition: condition)
-end
-
-puts "#{Tent.all.count} tents were created"
-
-
 bags = [
   ["Trestles 30", "Marmot", 30, "Synthetic"],
   ["Trestles 15", "Marmot", 15, "Synthetic"],
@@ -154,12 +136,25 @@ bags = [
   ["Mens Lamina 20", "Mountain Hardwear", 20, "Synthetic"]
 ]
 
-bags.each do |bag|
-  user = User.all.sample
-  size = ["Womens", "Reg", "Long"].sample
-  condition = conditions.sample
+User.all.each do |user|
 
-  Sleepingbag.create!(user_id: user.id, name: bag[0], brand: bag[1], temp_rating: bag[2], size: size, condition: condition, fill: bag[3])
+  rand(4).times do
+    bag = bags.sample
+    Sleepingbag.create!(user_id: user.id, name: bag[0], brand: bag[1], temp_rating: bag[2], size: bag_size, condition: condition, fill: bag[3])
+  end
+
+
+  rand(4).times do
+    pack = packs.sample
+    Backpack.create!(user_id: user.id, name: pack[0], brand: pack[1], capacity: pack[2], size: pack_size, condition: condition, gender: pack[3])
+  end
+
+  rand(3).times do
+    tent = tents.sample
+    Tent.create!(user_id: user.id, name: tent[0], brand: tent[1], capacity: tent[2], use: tent[3], condition: condition)
+  end
 end
 
 puts "#{Sleepingbag.all.count} sleepingbags were created"
+puts "#{Backpack.all.count} packs were created"
+puts "#{Tent.all.count} tents were created"
