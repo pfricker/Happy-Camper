@@ -1,6 +1,6 @@
 class SleepingbagsController < ApplicationController
   def index
-    @sleepingbags = Sleepingbag.all
+    @sleepingbags = Sleepingbag.all.page params[:page]
   end
 
   def show

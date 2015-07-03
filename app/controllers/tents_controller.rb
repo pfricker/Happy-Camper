@@ -1,6 +1,6 @@
 class TentsController < ApplicationController
   def index
-    @tents = Tent.all
+    @tents = Tent.all.page params[:page]
   end
 
   def show

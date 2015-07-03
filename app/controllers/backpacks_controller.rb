@@ -1,6 +1,6 @@
 class BackpacksController < ApplicationController
   def index
-    @backpacks = Backpack.all
+    @backpacks = Backpack.all.page params[:page]
   end
 
   def show

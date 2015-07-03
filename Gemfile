@@ -24,6 +24,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'faker'
 # Use pry for debugging
 gem 'pry'
+# Use kaminari for pagination
+gem 'kaminari'
 
 
 

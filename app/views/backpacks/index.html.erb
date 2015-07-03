@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="medium-12 medium-centered columns text centered">
+  <div class="medium-12 medium-centered columns">
     <h1>AVAILABLE BACKPACKS</h1>
   </div>
 </div>
@@ -11,5 +11,11 @@
         <li> <%= link_to backpack.name, backpack %> : <%= backpack.user.username %></li>
       <% end %>
     </ul>
+  </div>
+</div>
+
+<div class="row">
+  <div class="medium-12 medium-centered text-center columns">
+    <%= paginate @backpacks %>
   </div>
 </div>
