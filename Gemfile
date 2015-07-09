@@ -29,7 +29,9 @@ gem 'kaminari'
 # Use paperclip for image uploads
 gem "paperclip"
 # Use AWS S3 bucket for image storage
-gem 'aws-sdk'
+gem 'aws-sdk', '< 2.0'
+
+gem 'dotenv-rails'
 
 
 

@@ -1,8 +1,8 @@
 <div class="row">
-  <% if @backpack.errors.present? %>
+  <% if @sleepingbag.errors.present? %>
     <div class="large-12 alert-box alert" data-alert>
       <ul>
-        <% @backpack.errors.full_messages.each do |error| %>
+        <% @sleepingbag.errors.full_messages.each do |error| %>
           <li><%= error %></li>
         <% end %>
       </ul>
@@ -12,9 +12,9 @@
 
 <div class="row">
   <div class="medium-12 medium-centered columns">
-    <h2>New Backpack</h2>
+    <h2>New sleepingbag</h2>
 
-      <%= form_for @backpack do |f| %>
+      <%= form_for @sleepingbag do |f| %>
 
         <%= f.label :name %>
         <%= f.text_field :name %>
@@ -22,17 +22,17 @@
         <%= f.label :brand %>
         <%= f.text_field :brand %>
 
-        <%= f.label "Capacity (in Liters)" %>
-        <%= f.select :capacity, options_for_select(15..115) %>
+        <%= f.label "Temperature Rating (℉)" %>
+        <%= f.select :temp_rating, options_for_select(50.downto(-40)) %>
 
         <%= f.label :size %>
-        <%= f.select :size, options_for_select(Backpack::SIZES) %>
+        <%= f.select :size, options_for_select(Sleepingbag::SIZES) %>
 
         <%= f.label :condition %>
-        <%= f.select :condition, options_for_select(Backpack::CONDITION) %>
+        <%= f.select :condition, options_for_select(Sleepingbag::CONDITION) %>
 
-        <%= f.label :gender %>
-        <%= f.select :gender, options_for_select(Backpack::GENDER) %>
+        <%= f.label :fill %>
+        <%= f.select :fill, options_for_select(Sleepingbag::FILL) %>
 
         <%= f.label :image %>
         <%= f.file_field :image %>
