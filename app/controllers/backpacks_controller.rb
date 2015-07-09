@@ -6,4 +6,10 @@ class BackpacksController < ApplicationController
   def show
     @backpack = Backpack.find(params[:id])
   end
+
+  def new
+    @backpack = Backpack.new
+  end
+
+  
 end

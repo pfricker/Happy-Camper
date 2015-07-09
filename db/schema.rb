@@ -11,46 +11,58 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150630022316) do
+ActiveRecord::Schema.define(version: 20150709125626) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "backpacks", force: :cascade do |t|
-    t.integer "user_id"
-    t.string  "name",      null: false
-    t.string  "brand"
-    t.integer "capacity"
-    t.string  "size"
-    t.string  "condition"
-    t.string  "gender"
+    t.integer  "user_id"
+    t.string   "name",               null: false
+    t.string   "brand"
+    t.integer  "capacity"
+    t.string   "size"
+    t.string   "condition"
+    t.string   "gender"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   add_index "backpacks", ["user_id"], name: "index_backpacks_on_user_id", using: :btree
 
   create_table "sleepingbags", force: :cascade do |t|
     t.integer  "user_id"
-    t.string   "name",        null: false
+    t.string   "name",               null: false
     t.string   "brand"
     t.integer  "temp_rating"
     t.string   "size"
     t.string   "condition"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.string   "fill"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   add_index "sleepingbags", ["user_id"], name: "index_sleepingbags_on_user_id", using: :btree
 
   create_table "tents", force: :cascade do |t|
     t.integer  "user_id"
-    t.string   "name",       null: false
+    t.string   "name",               null: false
     t.string   "brand"
     t.string   "capacity"
     t.string   "use"
     t.string   "condition"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   add_index "tents", ["user_id"], name: "index_tents_on_user_id", using: :btree
@@ -71,6 +83,10 @@ ActiveRecord::Schema.define(version: 20150630022316) do
     t.string   "username",                            null: false
     t.string   "first_name",                          null: false
     t.string   "last_name",                           null: false
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

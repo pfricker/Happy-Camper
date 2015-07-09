@@ -15,11 +15,11 @@
  *= require foundation_and_overrides
 
  */
-body {
+/* body {
   background-image: url(/assets/hiker.jpg);
   background-repeat: no-repeat;
   background-size: 100% auto;
-}
+} */
 
 li {
   list-style-type: none;

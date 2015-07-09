@@ -20,12 +20,16 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
-# User Faker to seed the database
+# Use Faker to seed the database
 gem 'faker'
 # Use pry for debugging
 gem 'pry'
 # Use kaminari for pagination
 gem 'kaminari'
+# Use paperclip for image uploads
+gem "paperclip"
+# Use AWS S3 bucket for image storage
+gem 'aws-sdk'
 
 
 

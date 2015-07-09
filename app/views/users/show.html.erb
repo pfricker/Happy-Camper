@@ -1,0 +1,58 @@
+<div class="row">
+  <div class="medium-12 medium-centered columns">
+    <h2> YOUR PROFILE </h2>
+  </div>
+</div>
+
+<div class="row">
+  <div class="medium-6 medium-centered columns float right">
+    <% if @user.avatar? %>
+      <%= image_tag @user.avatar.url(:medium) %>
+    <% end %>
+  </div>
+
+  <div class="medium-6 medium-centered columns float left">
+    <ul style="list-style-type: none">
+      <li> Name : <%= @user.first_name %> <%= @user.last_name %></li>
+      <li> Username: <%= @user.username %> </li>
+      <li> E-mail: <%= @user.email %> </li>
+    </ul>
+      <%= link_to "Edit My Profile", edit_user_registration_path, class: "button radius" %>
+  </div>
+
+</div>
+
+<div class="row">
+  <h2> YOUR GEAR </h2>
+
+  <div class="medium-4 text-center columns float left">
+    <h4>BACKPACKS</h4>
+    <ul>
+      <% @user.backpacks.each do |backpack| %>
+        <li> <%= link_to backpack.name, backpack %> </li>
+      <% end %>
+    <%= link_to "Add New Backpack", new_backpack_path, class: "button radius tiny" %>
+    </ul>
+  </div>
+
+  <div class="medium-4 text-center columns float left">
+    <h4>TENTS</h4>
+    <ul>
+      <% @user.tents.each do |tent| %>
+        <li> <%= link_to tent.name, tent%> </li>
+      <% end %>
+    </ul>
+    <%= link_to "Add New Tent", new_tent_path, class: "button radius tiny" %>
+  </div>
+
+  <div class="medium-4 text-center columns float left">
+    <h4>SLEEPINGBAGS</h4>
+    <ul>
+      <% @user.sleepingbags.each do |bag| %>
+        <li> <%= link_to bag.name, bag %> </li>
+      <% end %>
+    </ul>
+    <%= link_to "Add New Sleepingbag", new_sleepingbag_path, class: "button radius tiny" %>
+  </div>
+
+</div>
