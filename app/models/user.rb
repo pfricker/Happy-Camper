@@ -5,6 +5,15 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :backpacks
+  has_many :tents
+  has_many :sleepingbags
+
+  has_attached_file :avatar, styles: {
+    large: "400x400>",
+    medium: "300x300>",
+    thumb: "75x75>"
+    }
+  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 
   validates :email, presence: true, uniqueness: true
   validates :password, presence: true

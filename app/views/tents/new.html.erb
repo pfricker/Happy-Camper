@@ -1,0 +1,41 @@
+<div class="row">
+  <% if @tent.errors.present? %>
+    <div class="large-12 alert-box alert" data-alert>
+      <ul>
+        <% @tent.errors.full_messages.each do |error| %>
+          <li><%= error %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+</div>
+
+<div class="row">
+  <div class="medium-12 medium-centered columns">
+    <h2>New Tent</h2>
+
+      <%= form_for @tent do |f| %>
+
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+
+        <%= f.label :brand %>
+        <%= f.text_field :brand %>
+
+        <%= f.label "Capacity" %>
+        <%= f.select :capacity, options_for_select(1..8) %>
+
+        <%= f.label :use %>
+        <%= f.select :use, options_for_select(Tent::USE) %>
+
+        <%= f.label :condition %>
+        <%= f.select :condition, options_for_select(Tent::CONDITION) %>
+
+        <%= f.label :image %>
+        <%= f.file_field :image %>
+
+        <%= f.submit "Add", class: "button radius small" %>
+      <% end %>
+
+  </div>
+</div>
