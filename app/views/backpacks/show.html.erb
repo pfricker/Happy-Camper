@@ -7,15 +7,37 @@
 
 <div class="row">
   <div class="medium-6 medium-centered columns float left">
-    <ul>
-      <li> Brand: <%= @backpack.brand %> </li>
-      <li> Capacity (in Liters): <%= @backpack.capacity %> </li>
-      <li> Size: <%= @backpack.size %> </li>
-      <li> Condition: <%= @backpack.condition %> </li>
-      <li> Gender: <%= @backpack.gender %> </li>
-    </ul>
+    <table>
+      <tbody>
+        <tr>
+          <td> Brand: </td>
+          <td> <%= @backpack.brand %> </td>
+        </tr>
+        <tr>
+          <td> Capacity (in Liters): </td>
+          <td> <%= @backpack.capacity %> </td>
+        </tr>
+        <tr>
+          <td> Size: </td>
+          <td> <%= @backpack.size %> </td>
+        </tr>
+        <tr>
+          <td> Condition: </td>
+          <td> <%= @backpack.condition %> </td>
+        </tr>
+        <tr>
+          <td> Gender: </td>
+          <td> <%= @backpack.gender %> </td>
+        </tr>
+      </tbody>
+    </table>
+    <% if current_user == @backpack.user %>
+      <%= link_to "Edit Backpack", edit_backpack_path, class: "button radius tiny" %>
+    <% end %>
   </div>
   <div class="medium-6 medium-centered columns text centered float left">
-    <%= image_tag @backpack.image.url(:medium) %>
+    <% if @backpack.image_file_name %>
+      <%= image_tag @backpack.image.url(:medium) %>
+    <% end %>
   </div>
 </div>

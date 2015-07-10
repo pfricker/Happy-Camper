@@ -21,6 +21,12 @@
   background-size: 100% auto;
 } */
 
+body {
+    background-image: url("hiker.jpg");
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+}
+
 li {
   list-style-type: none;
 }

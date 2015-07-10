@@ -22,9 +22,32 @@ class BackpacksController < ApplicationController
     end
   end
 
+  def edit
+    @backpack = Backpack.find(params[:id])
+  end
+
+  def update
+    @backpack = Backpack.find(params[:id])
+    if @backpack.update(backpack_params)
+      flash[:notice] = "Backpack updated successfully."
+      redirect_to backpack_path(params[:id])
+    else
+      render :new
+    end
+  end
+
+
   private
 
   def backpack_params
-    params.require(:backpack).permit(:name, :brand, :capacity, :size, :condition, :gender, :image)
+    params.require(:backpack).permit(
+      :name,
+      :brand,
+      :capacity,
+      :size,
+      :condition,
+      :gender,
+      :image
+    )
   end
 end

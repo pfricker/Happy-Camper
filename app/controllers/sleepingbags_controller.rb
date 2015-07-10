@@ -22,6 +22,21 @@ class SleepingbagsController < ApplicationController
     end
   end
 
+  def edit
+    @sleepingbag = Sleepingbag.find(params[:id])
+  end
+
+  def update
+    @sleepingbag  = Sleepingbag.find(params[:id])
+    if @sleepingbag.update(sleepingbag_params)
+      flash[:notice] = "Sleepingbag updated successfully"
+      redirect_to sleepingbag_path(params[:id])
+    else
+      render :new
+    end 
+  end
+
+
     private
 
     def sleepingbag_params
