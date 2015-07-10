@@ -5,7 +5,7 @@
 </div>
 
 <div class="row">
-  <div class="medium-12 medium-centered columns">
+  <div class="medium-4 columns" id="box">
     <ul>
       <% @backpacks.each do |backpack| %>
         <li> <%= link_to backpack.name, backpack %> : <%= backpack.user.username %></li>
@@ -13,9 +13,9 @@
     </ul>
   </div>
 </div>
-
+<br>
 <div class="row">
-  <div class="medium-12 medium-centered text-center columns">
+  <div class="medium-4 text-center columns" id="box">
     <%= paginate @backpacks %>
   </div>
 </div>

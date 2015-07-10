@@ -5,13 +5,8 @@
 </div>
 
 <div class="row">
-  <div class="medium-6 medium-centered columns float right">
-    <% if @user.avatar? %>
-      <%= image_tag @user.avatar.url(:medium) %>
-    <% end %>
-  </div>
 
-  <div class="medium-6 medium-centered columns float left">
+  <div class="medium-4 columns float left" id="box">
     <ul style="list-style-type: none">
       <li> Name : <%= @user.first_name %> <%= @user.last_name %></li>
       <li> Username: <%= @user.username %> </li>
@@ -20,11 +15,17 @@
       <%= link_to "Edit My Profile", edit_user_registration_path, class: "button radius" %>
   </div>
 
+  <div class="medium-5 columns float right">
+    <% if @user.avatar? %>
+      <%= image_tag @user.avatar.url(:medium) %>
+    <% end %>
+  </div>
 </div>
-
-<div class="row">
-  <h2> YOUR GEAR </h2>
-
+<br>
+<div class="row" id="box">
+  <div class="medium-11 medium-centered columns">
+    <h2> YOUR GEAR </h2>
+  </div>
   <div class="medium-4 text-center columns float left">
     <h4>BACKPACKS</h4>
     <ul>
@@ -54,5 +55,4 @@
     </ul>
     <%= link_to "Add New Sleepingbag", new_sleepingbag_path, class: "button radius tiny" %>
   </div>
-
 </div>

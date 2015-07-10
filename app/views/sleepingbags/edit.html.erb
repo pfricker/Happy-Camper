@@ -9,10 +9,11 @@
     </div>
   <% end %>
 </div>
+<br>
 
 <div class="row">
-  <div class="medium-12 medium-centered columns">
-    <h2>New sleepingbag</h2>
+  <div class="medium-6 medium-centered columns" id="box">
+    <h2 class="text-center">Edit sleepingbag</h2>
 
       <%= form_for @sleepingbag do |f| %>
 
@@ -28,11 +29,11 @@
         <%= f.label :size %>
         <%= f.select :size, options_for_select(Sleepingbag::SIZES) %>
 
-        <%= f.label :condition %>
-        <%= f.select :condition, options_for_select(Sleepingbag::CONDITION) %>
-
         <%= f.label :fill %>
         <%= f.select :fill, options_for_select(Sleepingbag::FILL) %>
+
+        <%= f.label :condition %>
+        <%= f.select :condition, options_for_select(Sleepingbag::CONDITION) %>
 
         <%= f.label :image %>
         <%= f.file_field :image %>

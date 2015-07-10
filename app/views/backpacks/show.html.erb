@@ -1,36 +1,19 @@
 <div class="row">
   <div class="medium-12 medium-centered columns">
-    <h3><%= @backpack.name %></h3>
-    <h5> User: <%= @backpack.user.username %> </h5>
+    <h2><%= @backpack.name %></h2>
   </div>
 </div>
 
 <div class="row">
-  <div class="medium-6 medium-centered columns float left">
-    <table>
-      <tbody>
-        <tr>
-          <td> Brand: </td>
-          <td> <%= @backpack.brand %> </td>
-        </tr>
-        <tr>
-          <td> Capacity (in Liters): </td>
-          <td> <%= @backpack.capacity %> </td>
-        </tr>
-        <tr>
-          <td> Size: </td>
-          <td> <%= @backpack.size %> </td>
-        </tr>
-        <tr>
-          <td> Condition: </td>
-          <td> <%= @backpack.condition %> </td>
-        </tr>
-        <tr>
-          <td> Gender: </td>
-          <td> <%= @backpack.gender %> </td>
-        </tr>
-      </tbody>
-    </table>
+  <div class="medium-3 columns float left" id="box">
+    <ul>
+      <li> User: <%= @backpack.user.username %> </li>
+      <li> Brand: <%= @backpack.brand %> </li>
+      <li> Capacity (in Liters): <%= @backpack.capacity %> </li>
+      <li> Size: <%= @backpack.size %> </li>
+      <li> Condition: <%= @backpack.condition %> </li>
+      <li> Gender: <%= @backpack.gender %> </li>
+    </ul>
     <% if current_user == @backpack.user %>
       <%= link_to "Edit Backpack", edit_backpack_path, class: "button radius tiny" %>
     <% end %>

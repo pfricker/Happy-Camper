@@ -5,7 +5,7 @@
 </div>
 
 <div class="row">
-  <div class="medium-12 medium-centered columns">
+  <div class="medium-4 columns" id="box">
     <ul>
       <% @sleepingbags.each do |sleepingbag| %>
         <li> <%= link_to sleepingbag.name, sleepingbag %> : <%= sleepingbag.user.username %></li>
@@ -13,9 +13,9 @@
     </ul>
   </div>
 </div>
-
+<br>
 <div class="row">
-  <div class="medium-12 medium-centered text-center columns">
+  <div class="medium-4 columns" id="box">
     <%= paginate @sleepingbags %>
   </div>
 </div>
