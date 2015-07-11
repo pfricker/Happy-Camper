@@ -12,7 +12,7 @@
 <br>
 <div class="row">
   <div class="medium-6 medium-centered columns" id="box">
-    <h2 class="text-center">New Tent</h2>
+    <h2 class="text-center">Edit Tent</h2>
 
       <%= form_for @tent do |f| %>
 
@@ -23,18 +23,18 @@
         <%= f.text_field :brand %>
 
         <%= f.label "Capacity" %>
-        <%= f.select :capacity, options_for_select(1..8) %>
+        <%= f.select :capacity, options_for_select(1..8, @tent.capacity) %>
 
         <%= f.label :use %>
-        <%= f.select :use, options_for_select(Tent::USE) %>
+        <%= f.select :use, options_for_select(Tent::USE, @tent.use)%>
 
         <%= f.label :condition %>
-        <%= f.select :condition, options_for_select(Tent::CONDITION) %>
+        <%= f.select :condition, options_for_select(Tent::CONDITION, @tent.condition)%>
 
         <%= f.label :image %>
         <%= f.file_field :image %>
 
-        <%= f.submit "Add", class: "button radius small" %>
+        <%= f.submit "Update", class: "button radius small" %>
       <% end %>
 
   </div>

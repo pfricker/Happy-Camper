@@ -1,9 +1,18 @@
 <div class="row">
-  <div class="medium-12 medium-centered columns text centered">
-    <h2>Sign up</h2>
+  <% if @user.errors.present? %>
+    <div class="large-12 alert-box alert" data-alert>
+      <ul>
+        <%= devise_error_messages! %>
+      </ul>
+    </div>
+  <% end %>
+</div>
+<br>
+<div class="row">
+  <div class="medium-6 medium-centered columns" id="box">
+    <h2 class="text-center">Sign up</h2>
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-      <%= devise_error_messages! %>
 
       <div class="field">
         <%= f.label :email %><br />

@@ -24,16 +24,16 @@
         <%= f.text_field :brand %>
 
         <%= f.label "Temperature Rating (℉)" %>
-        <%= f.select :temp_rating, options_for_select(50.downto(-40)) %>
+        <%= f.select :temp_rating, options_for_select(50.downto(-40), @sleepingbag.temp_rating) %>
 
         <%= f.label :size %>
-        <%= f.select :size, options_for_select(Sleepingbag::SIZES) %>
+        <%= f.select :size, options_for_select(Sleepingbag::SIZES, @sleepingbag.size) %>
 
         <%= f.label :fill %>
-        <%= f.select :fill, options_for_select(Sleepingbag::FILL) %>
+        <%= f.select :fill, options_for_select(Sleepingbag::FILL, @sleepingbag.fill) %>
 
         <%= f.label :condition %>
-        <%= f.select :condition, options_for_select(Sleepingbag::CONDITION) %>
+        <%= f.select :condition, options_for_select(Sleepingbag::CONDITION, @sleepingbag.condition) %>
 
         <%= f.label :image %>
         <%= f.file_field :image %>

@@ -13,9 +13,14 @@
   </div>
 </div>
 
+<br>
 
 <div class="row">
-  <div class="medium-12 medium-centered text-center columns">
-  
+  <div class="medium-9 medium-centered text-center columns" id="box">
+    <%= form_tag search_index_path, method: "get" do |f| %>
+      <div id="search"><%= label_tag(:search, "Search for Gear") %></div>
+      <%= text_field_tag(:search, nil, placeholder: "Search By Model Name or Brand") %>
+      <%= submit_tag "Search", class: "button radius small" %>
+    <% end %>
   </div>
 </div>

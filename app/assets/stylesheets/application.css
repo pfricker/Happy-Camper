@@ -22,13 +22,22 @@
 } */
 
 body {
-    background-image: url("hiker.jpg");
-    background-size: 100% auto;
-    background-repeat: no-repeat;
+  background-color: #586581;
+  background-image: url("hiker.jpg");
+  background-size: 100% auto;
+  background-repeat: no-repeat;
 }
 
-li {
+ul {
+  margin: 0;
   list-style-type: none;
+}
+
+#search {
+  color: black;
+  font-family: KGFallForYou;
+  text-transform: uppercase;
+  font-size: 1.2 em;
 }
 
 #box {

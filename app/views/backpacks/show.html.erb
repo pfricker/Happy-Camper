@@ -14,8 +14,9 @@
       <li> Condition: <%= @backpack.condition %> </li>
       <li> Gender: <%= @backpack.gender %> </li>
     </ul>
+    <br>
     <% if current_user == @backpack.user %>
-      <%= link_to "Edit Backpack", edit_backpack_path, class: "button radius tiny" %>
+      <div class="text-center"><%= link_to "Edit Backpack", edit_backpack_path, class: "button radius tiny" %></div>
     <% end %>
   </div>
   <div class="medium-6 medium-centered columns text centered float left">

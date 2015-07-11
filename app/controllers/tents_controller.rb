@@ -21,7 +21,21 @@ class TentsController < ApplicationController
       render :new
     end
   end
-  
+
+  def edit
+    @tent = Tent.find(params[:id])
+  end
+
+  def update
+    @tent = Tent.find(params[:id])
+    if @tent.update(tent_params)
+      flash[:notice] = "tent updated successfully"
+      redirect_to tent_path(params[:id])
+    else
+      render :new
+    end
+  end
+
   private
 
   def tent_params

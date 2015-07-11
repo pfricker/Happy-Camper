@@ -9,10 +9,14 @@
     <ul>
       <li> User: <%= @tent.user.username %> </li>
       <li> Brand: <%= @tent.brand %> </li>
-      <li> Capacity (in Liters): <%= @tent.capacity %> </li>
+      <li> Capacity: <%= @tent.capacity %> </li>
       <li> Type: <%= @tent.use %> </li>
       <li> Condition: <%= @tent.condition %> </li>
     </ul>
+    <br>
+    <% if current_user == @tent.user %>
+      <div class="text-center"><%= link_to "Edit Tent", edit_tent_path, class: "button radius tiny" %></div>
+    <% end %>
   </div>
   <div class="medium-6 medium-centered columns float left">
     <% if @tent.image_file_name %>
