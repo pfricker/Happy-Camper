@@ -32,6 +32,8 @@ gem "paperclip"
 gem 'aws-sdk', '< 2.0'
 
 gem 'dotenv-rails'
+# Use pg_search for searches
+gem 'pg_search'
 
 
 

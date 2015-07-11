@@ -1,0 +1,36 @@
+<h1 class="text-center"> Results </h1>
+
+<div cleass="row">
+  <div class="medium-4 columns float left" id="box">
+    <h3 class="text-center"> Backpacks </h3>
+    <ul>
+    <% if @backpacks %>
+      <% @backpacks.each do |backpack| %>
+        <li> <%= link_to backpack.name, backpack %> : <%= backpack.user.username %></li>
+      <% end %>
+    <% end %>
+    </ul>
+  </div>
+
+  <div class="medium-4 columns float left" id="box">
+    <h3 class="text-center"> Sleepingbags </h3>
+    <ul>
+    <% if @sleepingbags %>
+      <% @sleepingbags.each do |sleepingbag| %>
+        <li> <%= link_to sleepingbag.name, sleepingbag %> : <%= sleepingbag.user.username %></li>
+      <% end %>
+    <% end %>
+    </ul>
+  </div>
+
+  <div class="medium-4 columns float left" id="box">
+    <h3 class="text-center"> Tents </h3>
+    <ul>
+    <% if @tents %>
+      <% @tents.each do |tent| %>
+        <li> <%= link_to tent.name, tent %> : <%= tent.user.username %></li>
+      <% end %>
+    <% end %>
+    </ul>
+  </div>
+</div>

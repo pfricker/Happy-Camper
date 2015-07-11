@@ -1,5 +1,11 @@
 class Tent < ActiveRecord::Base
   belongs_to :user
+  include PgSearch
+  pg_search_scope :search,
+    against: [:name, :brand],
+    using: {
+      tsearch: { prefix: true }
+    }
 
   has_attached_file :image, styles: {
     large: "400x400>",
