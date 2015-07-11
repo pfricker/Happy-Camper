@@ -56,3 +56,10 @@ h5,
 h6 {
   text-transform: uppercase;
 }
+
+#title {
+  margin-left: 10px;
+  color: white;
+  font-family: KGFallForYou;
+  text-transform: uppercase;
+}

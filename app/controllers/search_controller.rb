@@ -1,6 +1,5 @@
 class SearchController < ApplicationController
   def index
-    binding.pry
     unless params[:search] == ""
       @backpacks = Backpack.search(params[:search])
       @tents = Tent.search(params[:search])
