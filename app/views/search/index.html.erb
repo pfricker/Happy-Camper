@@ -1,36 +1,23 @@
 <h1 class="text-center"> Results </h1>
 
 <div cleass="row">
-  <% if @backpacks %>
-    <div class="medium-4 columns float left" id="box">
-      <h3 class="text-center"> Backpacks </h3>
-      <ul>
-        <% @backpacks.each do |backpack| %>
-          <li> <%= link_to backpack.name, backpack %> : <%= backpack.user.username %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <% if @sleepingbags %>
-    <div class="medium-4 columns float left" id="box">
-      <h3 class="text-center"> Sleepingbags </h3>
-      <ul>
-        <% @sleepingbags.each do |sleepingbag| %>
-          <li> <%= link_to sleepingbag.name, sleepingbag %> : <%= sleepingbag.user.username %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <% if @tents %>
-    <div class="medium-4 columns float left" id="box">
-      <h3 class="text-center"> Tents </h3>
-      <ul>
-        <% @tents.each do |tent| %>
-          <li> <%= link_to tent.name, tent %> : <%= tent.user.username %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <div class="medium-4 medium-centered columns" id="box">
+    <h4> Your search returned <%= @results.count %> results </h4>
+    <ul>
+    <% if @type == 'Backpack'%>
+      <% @results.each do |backpack| %>
+        <li><%= link_to "#{backpack.brand} #{backpack.name}", backpack %></li>
+      <% end %>
+    <% elsif @type == 'Sleepingbag' %>
+      <% @results.each do |sleepingbag| %>
+        <li><%= link_to "#{sleepingbag.brand} #{sleepingbag.name}", sleepingbag %></li>
+      <% end %>
+    <% else %>
+      <% @results.each do |tent| %>
+        <li><%= link_to "#{tent.brand} #{tent.name}", tent %></li>
+      <% end %>
+    <% end %>
+    </ul>
+    <h5 class="text-center"><%= paginate @results %></h5>
+  </div>
 </div>

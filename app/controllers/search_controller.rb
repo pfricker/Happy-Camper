@@ -1,13 +1,12 @@
 class SearchController < ApplicationController
   def index
-    unless params[:search] == ""
-      @backpacks = Backpack.search(params[:search])
-      @tents = Tent.search(params[:search])
-      @sleepingbags = Sleepingbag.search(params[:search])
+    @type = params[:search_category]
+    if @type == "Backpack"
+      @results = Backpack.search(params[:search]).page params[:page]
+    elsif @type == "Sleepingbag"
+      @results = Sleepingbag.search(params[:search]).page params[:page]
     else
-      @backpacks = Backpack.all
-      @tents = Tent.all
-      @sleepingbags = Sleepingbag.all
+      @results = Tent.search(params[:search]).page params[:page]
     end
   end
 end

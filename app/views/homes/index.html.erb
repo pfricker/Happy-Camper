@@ -7,15 +7,19 @@
 <br>
 
 <div class="row">
-  <div class="medium-9 medium-centered text-center columns" id="box">
-    <h3> Search </h3>
-    <ul class="inline-list">
-      <%= check_box_tag(:backpack) %>
-      <%= label_tag(:backpack, "Backpack") %>
-      <%= check_box_tag(:tent) %>
-      <%= label_tag(:tent, "Tent") %>
-      <%= check_box_tag(:sleepingbag) %>
-      <%= label_tag(:sleepingbag, "Sleepingbag") %>
-    </ul>
+  <div class="medium-9 medium-centered text-center columns " id="box">
+    <h3>Find Your Gear</h3>
+    <%= form_tag search_index_path, method: "get" do |f| %>
+      <ul class="inline-list">
+        <%= radio_button_tag(:search_category, "Backpack", checked: 'checked') %>
+        <%= label_tag(:search_category, "Backpacks") %>
+        <%= radio_button_tag(:search_category, "Tent") %>
+        <%= label_tag(:search_category, "Tents") %>
+        <%= radio_button_tag(:search_category, "Sleepingbag") %>
+        <%= label_tag(:search_category, "Sleepingbags") %>
+      </ul>
+      <%= text_field_tag(:search, nil, placeholder: "Search By Model Name or Brand") %>
+      <%= submit_tag "search", class: "button radius small" %>
+    <% end %>
   </div>
 </div>
