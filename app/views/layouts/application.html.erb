@@ -6,35 +6,49 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div class="off-canvas-wrap" data-offcanvas>
+    <div class="inner-wrap">
+      <nav class="top-bar">
+        <section class="left">
+          <a class="left-off-canvas-toggle menu-icon" href="#" id="title"><span>Happy Camper</span></a>
+        </section>
 
-  <nav class="top-bar">
-    <ul class="title-area">
-      <li class="name">
-        <h1><a href="/">HAPPY CAMPER</a></h1>
-      </li>
-    </ul>
+        <section class="top-bar-section">
+          <ul class="right">
+            <li class="divider"></li>
+            <% if current_user %>
+              <li><%= link_to 'My Account', user_path(current_user.id) %></li>
+              <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
+            <%- else -%>
+              <li><%= link_to 'Sign Up', new_user_registration_path %></li>
+              <li><%= link_to 'Sign In', new_user_session_path %></li>
+            <% end %>
+          </ul>
+        </section>
+      </nav>
 
-    <section class="top-bar-section">
-      <ul class="right">
-        <% if current_user %>
-          <li><%= link_to 'My Account', user_path(current_user.id) %></li>
-          <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
-        <%- else -%>
-          <li><%= link_to 'Sign Up', new_user_registration_path %></li>
-          <li><%= link_to 'Sign In', new_user_session_path %></li>
-        <% end %>
-      </ul>
-    </section>
-  </nav>
+      <aside class="left-off-canvas-menu">
+        <ul class="off-canvas-list">
+          <li><label>Menu</label></li>
+          <li><%= link_to "Home", root_path %>
+          <li><%= link_to "Backpacks", backpacks_path %></li>
+          <li><%= link_to "Tents", tents_path %></li>
+          <li><%= link_to "Sleepingbags", sleepingbags_path %></li>
+        </ul>
+      </aside>
 
-  <%- flash.each do |key, value| -%>
-    <div class="flash flash-<%= key %>">
-      <%= value %>
+      <%- flash.each do |key, value| -%>
+        <div class="flash flash-<%= key %>">
+          <%= value %>
+        </div>
+      <%- end -%>
+
+      <%= yield %>
+
+      <a class="exit-off-canvas"></a>
+
     </div>
-  <%- end -%>
-
-  <%= yield %>
-
+  </div>
   <%= javascript_include_tag 'application' %>
   <%= yield :extra_footer %>
 </body>

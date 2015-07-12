@@ -1,0 +1,23 @@
+<h1 class="text-center"> Results </h1>
+
+<div cleass="row">
+  <div class="medium-4 medium-centered columns" id="box">
+    <h4> Your search returned <%= @results.count %> results </h4>
+    <ul>
+    <% if @type == 'Backpack'%>
+      <% @results.each do |backpack| %>
+        <li><%= link_to "#{backpack.brand} #{backpack.name}", backpack %></li>
+      <% end %>
+    <% elsif @type == 'Sleepingbag' %>
+      <% @results.each do |sleepingbag| %>
+        <li><%= link_to "#{sleepingbag.brand} #{sleepingbag.name}", sleepingbag %></li>
+      <% end %>
+    <% else %>
+      <% @results.each do |tent| %>
+        <li><%= link_to "#{tent.brand} #{tent.name}", tent %></li>
+      <% end %>
+    <% end %>
+    </ul>
+    <h5 class="text-center"><%= paginate @results %></h5>
+  </div>
+</div>

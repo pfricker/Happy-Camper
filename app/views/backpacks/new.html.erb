@@ -22,16 +22,16 @@
         <%= f.text_field :brand %>
 
         <%= f.label "Capacity (in Liters)" %>
-        <%= f.select :capacity, options_for_select(15..115) %>
+        <%= f.select :capacity, options_for_select(15..115), include_blank: true %>
 
         <%= f.label :size %>
-        <%= f.select :size, options_for_select(Backpack::SIZES) %>
+        <%= f.select :size, options_for_select(Backpack::SIZES), include_blank: true %>
 
         <%= f.label :condition %>
-        <%= f.select :condition, options_for_select(Backpack::CONDITION) %>
+        <%= f.select :condition, options_for_select(Backpack::CONDITION), include_blank: true %>
 
         <%= f.label :gender %>
-        <%= f.select :gender, options_for_select(Backpack::GENDER) %>
+        <%= f.select :gender, options_for_select(Backpack::GENDER), include_blank: true %>
 
         <%= f.label :image %>
         <%= f.file_field :image %>

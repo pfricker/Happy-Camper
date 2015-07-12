@@ -33,13 +33,6 @@ ul {
   list-style-type: none;
 }
 
-#search {
-  color: black;
-  font-family: KGFallForYou;
-  text-transform: uppercase;
-  font-size: 1.2 em;
-}
-
 #box {
   background-color: rgba(255, 255, 255, 0.4);
 }
@@ -54,5 +47,12 @@ h3,
 h4,
 h5,
 h6 {
+  text-transform: uppercase;
+}
+
+#title {
+  margin-left: 10px;
+  color: white;
+  font-family: KGFallForYou;
   text-transform: uppercase;
 }
