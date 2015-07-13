@@ -23,7 +23,7 @@
 
 body {
   background-color: #586581;
-  background-image: url('<%= asset_path("hiker.jpg") %>');
+  background-image: url("hiker.jpg");
   background-size: 100% auto;
   background-repeat: no-repeat;
 }
