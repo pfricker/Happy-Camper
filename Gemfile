@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+ruby "2.1.5"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.2'
@@ -34,6 +35,8 @@ gem 'aws-sdk', '< 2.0'
 gem 'dotenv-rails'
 # Use pg_search for searches
 gem 'pg_search'
+
+gem 'rails_12factor', group: :production
 
 
 
