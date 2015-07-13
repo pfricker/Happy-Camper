@@ -1,6 +1,5 @@
 class BackpacksController < ApplicationController
   def index
-    binding.pry
     @backpacks = Backpack.all.page params[:page]
   end
 
