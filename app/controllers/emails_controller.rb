@@ -7,7 +7,7 @@ class EmailsController < ApplicationController
     elsif params[:sleepingbag]
       gear = Sleepingbag.find(params[:sleepingbag])
     end
-    UserMailer.request_mailer(current_user, gear, date_params[:from_date], date_params[:to_date])
+    UserMailer.request_mailer(current_user, gear, date_params[:from_date], date_params[:to_date]).deliver_now
     redirect_to root_path
     flash[:notice] = "Your email has been sent."
   end
