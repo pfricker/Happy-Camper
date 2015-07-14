@@ -19,9 +19,24 @@
       <div class="text-center"><%= link_to "Edit Backpack", edit_backpack_path, class: "button radius tiny" %></div>
     <% end %>
   </div>
+
   <div class="medium-6 medium-centered columns text centered float left">
     <% if @backpack.image_file_name %>
       <%= image_tag @backpack.image.url(:medium) %>
+    <% end %>
+  </div>
+</div>
+<br>
+<div class="row">
+  <div class="medium-3 columns float left" id="box">
+    <% if current_user.present? %>
+      <h4 class="text-center"> Request this Backpack </h4>
+      <%= form_tag emails_path do %>
+        <%= date_field :date, :from_date %>
+        <%= date_field :date, :to_date %>
+        <%= hidden_field_tag :backpack, @backpack.id %>
+        <%= submit_tag "Send Email", class: "button radius small" %>
+      <% end %>
     <% end %>
   </div>
 </div>

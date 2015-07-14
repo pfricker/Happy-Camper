@@ -8,5 +8,7 @@ class SearchController < ApplicationController
     else
       @results = Tent.search(params[:search]).page params[:page]
     end
+
+    # redirect_to tents_path(params)
   end
 end
