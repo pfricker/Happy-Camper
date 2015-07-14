@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1><%= @lender.first_name %>, You have a new gear request </h1>
+    <p>
+      <%= @user.username %> would like to borrow your <%= @gear.name %> from <%= @date1 %> until <%= @date2 %>.  You can contact <%= @user.username %> directly at <%= @user.email %><br>
+    </p>
+  </body>
+</html>
