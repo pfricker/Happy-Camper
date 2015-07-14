@@ -1,6 +1,10 @@
 class SleepingbagsController < ApplicationController
   def index
-    @sleepingbags = Sleepingbag.all.page params[:page]
+    if params[:search].present?
+      @sleepingbags = Sleepingbag.search(params[:search]).page params[:page]
+    else
+      @sleepingbags = Sleepingbag.all.page params[:page]
+    end
   end
 
   def show
@@ -33,7 +37,7 @@ class SleepingbagsController < ApplicationController
       redirect_to sleepingbag_path(params[:id])
     else
       render :new
-    end 
+    end
   end
 
 

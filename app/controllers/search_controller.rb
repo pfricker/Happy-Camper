@@ -2,13 +2,11 @@ class SearchController < ApplicationController
   def index
     @type = params[:search_category]
     if @type == "Backpack"
-      @results = Backpack.search(params[:search]).page params[:page]
+      redirect_to backpacks_path(params)
     elsif @type == "Sleepingbag"
-      @results = Sleepingbag.search(params[:search]).page params[:page]
+      redirect_to sleepingbags_path(params)
     else
-      @results = Tent.search(params[:search]).page params[:page]
+      redirect_to tents_path(params)
     end
-
-    # redirect_to tents_path(params)
   end
 end

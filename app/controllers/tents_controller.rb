@@ -1,6 +1,10 @@
 class TentsController < ApplicationController
   def index
-    @tents = Tent.all.page params[:page]
+    if params[:search].present?
+      @tents = Tent.search(params[:search]).page params[:page]
+    else
+      @tents = Tent.all.page params[:page]
+    end
   end
 
   def show
