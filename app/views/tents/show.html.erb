@@ -24,3 +24,17 @@
     <% end %>
   </div>
 </div>
+<br>
+<div class="row">
+  <div class="medium-3 columns float left" id="box">
+    <% if current_user.present? %>
+      <h4 class="text-center"> Request this Tent </h4>
+      <%= form_tag emails_path do %>
+        <%= date_field :date, :from_date %>
+        <%= date_field :date, :to_date %>
+        <%= hidden_field_tag :tent, @tent.id %>
+        <%= submit_tag "Send Email", class: "button radius small" %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

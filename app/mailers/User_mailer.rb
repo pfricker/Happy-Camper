@@ -1,4 +1,4 @@
-class RequestMailer < ApplicationMailer
+class UserMailer < ApplicationMailer
   default from: 'weclome@happycamper.com'
 
   def request_mailer(user, gear, date1, date2)
