@@ -1,5 +1,6 @@
 class SearchController < ApplicationController
   def index
+    binding.pry
     @type = params[:search_category]
     if @type == "Backpack"
       redirect_to backpacks_path(params)
