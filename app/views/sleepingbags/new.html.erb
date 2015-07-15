@@ -28,11 +28,11 @@
         <%= f.label :size %>
         <%= f.select :size, options_for_select(Sleepingbag::SIZES), include_blank: true %>
 
-        <%= f.label :condition %>
-        <%= f.select :condition, options_for_select(Sleepingbag::CONDITION), include_blank: true %>
-
         <%= f.label :fill %>
         <%= f.select :fill, options_for_select(Sleepingbag::FILL), include_blank: true %>
+
+        <%= f.label :condition %>
+        <%= f.select :condition, options_for_select(Sleepingbag::CONDITION), include_blank: true %>
 
         <%= f.label :image %>
         <%= f.file_field :image %>

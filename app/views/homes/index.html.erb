@@ -7,19 +7,70 @@
 <br>
 
 <div class="row">
-  <div class="medium-9 medium-centered text-center columns " id="box">
+  <div class="medium-9 medium-centered text-center columns" id="box">
     <h3>Find Your Gear</h3>
     <%= form_tag search_index_path, method: "get" do |f| %>
       <ul class="inline-list">
-        <%= radio_button_tag(:search_category, "Backpack", checked: 'checked') %>
-        <%= label_tag(:search_category, "Backpacks") %>
-        <%= radio_button_tag(:search_category, "Tent") %>
-        <%= label_tag(:search_category, "Tents") %>
-        <%= radio_button_tag(:search_category, "Sleepingbag") %>
-        <%= label_tag(:search_category, "Sleepingbags") %>
+        <div class="medium-4 columns float left" id="backpack_button">
+          <%= radio_button_tag(:search_category, "Backpack", checked: 'checked') %>
+          <%= label_tag(:search_category, "Backpacks") %>
+        </div>
+        <div class="medium-4 columns float left" id="tent_button">
+          <%= radio_button_tag(:search_category, "Tent") %>
+          <%= label_tag(:search_category, "Tents") %>
+        </div>
+        <div class="medium-4 columns float left" id="sleepingbag_button">
+          <%= radio_button_tag(:search_category, "Sleepingbag") %>
+          <%= label_tag(:search_category, "Sleepingbags") %>
+        </div>
       </ul>
       <%= text_field_tag(:search, nil, placeholder: "Search By Model Name or Brand") %>
       <%= submit_tag "Search", class: "button radius small" %>
-    <% end %>
+
+  </div>
+
+  <div class="medium-9 medium-centered text-center columns" id="flip">
+    <div class="button radius success tiny" id="search_button">Advanced Search</div>
+  </div>
+  <div class="medium-9 medium-centered text-center columns" id="panel">
+    <div class="medium-12 medium-centered columns" id="backpack">
+      <%= label_tag(:search, "Capacity") %>
+      <%= select_tag :capacity, options_for_select(15..115), include_blank: true %>
+
+      <%= label_tag(:search, "Size") %>
+      <%= select_tag :size, options_for_select(Backpack::SIZES), include_blank: true %>
+
+      <%= label_tag(:search, "Gender") %>
+      <%= select_tag :gender, options_for_select(Backpack::GENDER), include_blank: true %>
+
+      <%= label_tag(:search, "Condtion") %>
+      <%= select_tag :condtion, options_for_select(Backpack::CONDITION), include_blank: true %>
+    </div>
+
+    <div class="medium-12 medium-centered columns" id="tent">
+      <%= label_tag(:search, "Capacity") %>
+      <%= select_tag :capacity, options_for_select(1..8), include_blank: true %>
+
+      <%= label_tag(:search, "Use") %>
+      <%= select_tag :use, options_for_select(Tent::USE), include_blank: true %>
+
+      <%= label_tag(:search, "Condtion") %>
+      <%= select_tag :condtion, options_for_select(Backpack::CONDITION), include_blank: true %>
+    </div>
+
+    <div class="medium-12 medium-centered columns" id="sleepingbag">
+      <%= label_tag(:search, "Temperature Rating") %>
+      <%= select_tag :temp_rating, options_for_select(50.downto(-40)), include_blank: true %>
+
+      <%= label_tag(:search, "Size") %>
+      <%= select_tag :size, options_for_select(Sleepingbag::SIZES), include_blank: true %>
+
+      <%= label_tag(:search, "Fill") %>
+      <%= select_tag :fill, options_for_select(Sleepingbag::FILL), include_blank: true %>
+
+      <%= label_tag(:search, "Condtion") %>
+      <%= select_tag :condtion, options_for_select(Sleepingbag::CONDITION), include_blank: true %>
+    </div>
   </div>
 </div>
+<% end %>

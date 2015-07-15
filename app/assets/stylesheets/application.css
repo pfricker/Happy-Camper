@@ -21,6 +21,26 @@
   background-size: 100% auto;
 } */
 
+#panel, #flip {
+    padding: 5px;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.5);
+    border: solid 1px #c3c3c3;
+}
+
+#panel {
+    padding: 50px;
+    display: none;
+}
+
+#tent, #sleepingbag {
+  display: none;
+}
+
+#search_button {
+  margin: 0px
+}
+
 body {
   background-color: #586581;
   background-image: url("hiker.jpg");
