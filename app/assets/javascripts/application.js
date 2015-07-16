@@ -26,17 +26,17 @@ $(document).ready(function(){
 });
 
 $(document).ready(function(){
-  $("#backpack_button").click(function(){
+  $("#search_category_Backpack").click(function(){
     $("#backpack").show();
     $("#tent").hide();
     $("#sleepingbag").hide();
   });
-  $("#tent_button").click(function(){
+  $("#search_category_Tent").click(function(){
     $("#backpack").hide();
     $("#tent").show();
     $("#sleepingbag").hide();;
   });
-  $("#sleepingbag_button").click(function(){
+  $("#search_category_Sleepingbag").click(function(){
     $("#backpack").hide();
     $("#tent").hide();
     $("#sleepingbag").show();;

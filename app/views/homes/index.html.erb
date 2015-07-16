@@ -11,18 +11,12 @@
     <h3>Find Your Gear</h3>
     <%= form_tag search_index_path, method: "get" do |f| %>
       <ul class="inline-list">
-        <div class="medium-4 columns float left" id="backpack_button">
           <%= radio_button_tag(:search_category, "Backpack", checked: 'checked') %>
           <%= label_tag(:search_category, "Backpacks") %>
-        </div>
-        <div class="medium-4 columns float left" id="tent_button">
           <%= radio_button_tag(:search_category, "Tent") %>
           <%= label_tag(:search_category, "Tents") %>
-        </div>
-        <div class="medium-4 columns float left" id="sleepingbag_button">
           <%= radio_button_tag(:search_category, "Sleepingbag") %>
           <%= label_tag(:search_category, "Sleepingbags") %>
-        </div>
       </ul>
       <%= text_field_tag(:search, nil, placeholder: "Search By Model Name or Brand") %>
       <%= submit_tag "Search", class: "button radius small" %>
