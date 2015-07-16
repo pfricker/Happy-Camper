@@ -1,7 +1,7 @@
 class SleepingbagsController < ApplicationController
   def index
-    if params[:search].present?
-      @sleepingbags = Sleepingbag.search(params[:search]).page params[:page]
+    if params[:location].present?
+      @sleepingbags = Sleepingbag.location_search(params[:location]).page params[:page]
     else
       @sleepingbags = Sleepingbag.all.page params[:page]
     end

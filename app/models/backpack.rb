@@ -7,6 +7,10 @@ class Backpack < ActiveRecord::Base
       tsearch: { prefix: true }
     }
 
+  geocoded_by :location,
+    :latitude => "users.latitude",
+    :longitude => "users.longitude"
+
   has_attached_file :image, styles: {
     large: "400x400>",
     medium: "300x300>",
@@ -23,4 +27,8 @@ class Backpack < ActiveRecord::Base
   SIZES = %w(XS S M L XL)
   CONDITION = ["New", "Like New", "Very Good", "Good", "Acceptable", "Seen Better Days"]
   GENDER = %w(Mens Womens Unisex)
+
+  def self.location_search (location)
+    joins(:user).near(location, 300)
+  end
 end

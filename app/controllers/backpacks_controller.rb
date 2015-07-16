@@ -1,7 +1,7 @@
 class BackpacksController < ApplicationController
   def index
-    if params[:search].present?
-      @backpacks = Backpack.search(params[:search]).page params[:page]
+    if params[:location].present?
+      @backpacks = Backpack.location_search(params[:location]).page params[:page]
     else
       @backpacks = Backpack.all.page params[:page]
     end

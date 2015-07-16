@@ -1,7 +1,7 @@
 class TentsController < ApplicationController
   def index
-    if params[:search].present?
-      @tents = Tent.search(params[:search]).page params[:page]
+    if params[:location].present?
+      @tents = Tent.location_search(params[:location]).page params[:page]
     else
       @tents = Tent.all.page params[:page]
     end
