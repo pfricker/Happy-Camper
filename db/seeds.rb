@@ -5,7 +5,7 @@
   first_name = Faker::Name.first_name
   last_name = Faker::Name.last_name
 
-  User.create(email: email, password: password, username: username, first_name: first_name, last_name: last_name)
+  User.create!(email: email, password: password, username: username, first_name: first_name, last_name: last_name)
 end
 puts "#{User.all.count} users were generated"
 
