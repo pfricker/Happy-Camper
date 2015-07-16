@@ -34,6 +34,8 @@
   </div>
   <div class="medium-9 medium-centered text-center columns" id="panel">
     <div class="medium-12 medium-centered columns" id="backpack">
+      <h5> Backpacks </h5>
+
       <%= label_tag(:search, "Capacity") %>
       <%= select_tag :capacity, options_for_select(15..115), include_blank: true %>
 
@@ -48,6 +50,8 @@
     </div>
 
     <div class="medium-12 medium-centered columns" id="tent">
+      <h5> Tents </h5>
+
       <%= label_tag(:search, "Capacity") %>
       <%= select_tag :capacity, options_for_select(1..8), include_blank: true %>
 
@@ -59,6 +63,8 @@
     </div>
 
     <div class="medium-12 medium-centered columns" id="sleepingbag">
+      <h5> Sleepingbags </h5>
+
       <%= label_tag(:search, "Temperature Rating") %>
       <%= select_tag :temp_rating, options_for_select(50.downto(-40)), include_blank: true %>
 
