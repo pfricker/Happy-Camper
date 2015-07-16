@@ -1,12 +1,12 @@
-100.times do
+1000.times do
   email = Faker::Internet.safe_email
   password = Faker::Internet.password
-  username = Faker::Internet.user_name + "_#{rand(99)}"
+  username = Faker::Internet.user_name + "_#{rand(999)}"
   first_name = Faker::Name.first_name
   last_name = Faker::Name.last_name
   location = Faker::Address.zip
 
-  User.create!(email: email, password: password, username: username, first_name: first_name, last_name: last_name, location: location)
+  User.create(email: email, password: password, username: username, first_name: first_name, last_name: last_name, location: location)
 end
 puts "#{User.all.count} users were generated"
 

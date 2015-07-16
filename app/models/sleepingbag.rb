@@ -30,6 +30,6 @@ class Sleepingbag < ActiveRecord::Base
   FILL = %w(Down Synthetic)
 
   def self.location_search (location)
-    joins(:user).near(location, 300)
+    joins(:user).near(location, 150, order: 'distance')
   end
 end

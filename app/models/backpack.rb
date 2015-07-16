@@ -29,6 +29,6 @@ class Backpack < ActiveRecord::Base
   GENDER = %w(Mens Womens Unisex)
 
   def self.location_search (location)
-    joins(:user).near(location, 300)
+    joins(:user).near(location, 150, order: 'distance')
   end
 end

@@ -1,11 +1,12 @@
 class Tent < ActiveRecord::Base
   belongs_to :user
   include PgSearch
-  pg_search_scope :search,
+  pg_search_scope :keyword_search,
     against: [:name, :brand],
-    using: {
-      tsearch: { prefix: true }
-    }
+    using: { tsearch: { prefix: true } }
+    scope :find_use, lambda { | | }
+
+
 
   geocoded_by :location,
     :latitude => "users.latitude",
@@ -27,6 +28,6 @@ class Tent < ActiveRecord::Base
   USE = ["Ultra Light", "Backpacking", "Mountaineering", "Car/Base Camping"]
 
   def self.location_search (location)
-    joins(:user).near(location, 300)
+    joins(:user).near(location, 150, order: 'distance')
   end
 end
