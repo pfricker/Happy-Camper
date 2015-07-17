@@ -6,6 +6,7 @@ FactoryGirl.define do
     sequence(:username){ |n| "user #{n}" }
     sequence(:first_name){ |n| "John #{n}" }
     sequence(:last_name){ |n| "Doe #{n}" }
+    location '02138'
     password 'password'
     password_confirmation 'password'
   end
@@ -24,7 +25,7 @@ FactoryGirl.define do
   factory :tent do
     sequence(:name) { |n| "model #{n}" }
     sequence(:brand) { |n| "brand #{n}" }
-    capacity '2 person'
+    capacity '2'
     use 'Ultra Light'
     condition 'Very Good'
 

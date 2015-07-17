@@ -1,11 +1,16 @@
 class Tent < ActiveRecord::Base
   belongs_to :user
   include PgSearch
-  pg_search_scope :search,
-    against: [:name, :brand],
-    using: {
-      tsearch: { prefix: true }
-    }
+  # pg_search_scope :keyword_search,
+  #   against: [:name, :brand],
+  #   using: { tsearch: { prefix: true } }
+  #   scope :advanced_search, lambda { |use, capacity, condition|
+  #     where( :use => use, :capacity => capacity, :condition => condition )
+  #   }
+
+  geocoded_by :location,
+    :latitude => "users.latitude",
+    :longitude => "users.longitude"
 
   has_attached_file :image, styles: {
     large: "400x400>",
@@ -21,4 +26,12 @@ class Tent < ActiveRecord::Base
 
   CONDITION = ["New", "Like New", "Very Good", "Good", "Acceptable", "Seen Better Days"]
   USE = ["Ultra Light", "Backpacking", "Mountaineering", "Car/Base Camping"]
+
+  def self.location_search (location)
+    joins(:user).near(location, 300, order: 'distance')
+  end
+  
+  def self.advanced_search (location, search_params)
+    joins(:user).near(location, 300, order: 'distance').where(search_params)
+  end
 end

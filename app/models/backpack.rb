@@ -1,11 +1,15 @@
 class Backpack < ActiveRecord::Base
   belongs_to :user
   include PgSearch
-  pg_search_scope :search,
-    against: [:name, :brand],
-    using: {
-      tsearch: { prefix: true }
-    }
+  # pg_search_scope :search,
+  #   against: [:name, :brand],
+  #   using: {
+  #     tsearch: { prefix: true }
+  #   }
+
+  geocoded_by :location,
+    :latitude => "users.latitude",
+    :longitude => "users.longitude"
 
   has_attached_file :image, styles: {
     large: "400x400>",
@@ -23,4 +27,12 @@ class Backpack < ActiveRecord::Base
   SIZES = %w(XS S M L XL)
   CONDITION = ["New", "Like New", "Very Good", "Good", "Acceptable", "Seen Better Days"]
   GENDER = %w(Mens Womens Unisex)
+
+  def self.location_search (location)
+    joins(:user).near(location, 150, order: 'distance')
+  end
+  
+  def self.advanced_search (location, search_params)
+    joins(:user).near(location, 300, order: 'distance').where(search_params)
+  end
 end
