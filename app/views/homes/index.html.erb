@@ -36,8 +36,11 @@
     <div class="medium-12 medium-centered columns" id="backpack">
       <h3> Backpacks </h3>
 
-      <%= label_tag(:search, "Search by Model Name or Brand") %>
-      <%= text_field_tag('pack[search]') %>
+      <%= label_tag('Model Name') %>
+      <%= text_field_tag('backpack[name]') %>
+
+      <%= label_tag(:brand) %>
+      <%= text_field_tag('backpack[brand]') %>
 
       <%= label_tag(:capacity) %>
       <%= select_tag 'backpack[capacity]', options_for_select(15..115), include_blank: true %>
@@ -55,8 +58,11 @@
     <div class="medium-12 medium-centered columns" id="tent">
       <h3> Tents </h3>
 
-      <%= label_tag(:search, "Search by Model Name or Brand") %>
-      <%= text_field_tag('tent[search]') %>
+      <%= label_tag('Model Name') %>
+      <%= text_field_tag('tent[name]') %>
+
+      <%= label_tag(:brand) %>
+      <%= text_field_tag('tent[brand]') %>
 
       <%= label_tag(:capacity) %>
       <%= select_tag 'tent[capacity]', options_for_select(1..8), include_blank: true %>
@@ -65,14 +71,17 @@
       <%= select_tag 'tent[use]', options_for_select(Tent::USE), include_blank: true %>
 
       <%= label_tag(:condtion) %>
-      <%= select_tag 'tent[condtion]', options_for_select(Backpack::CONDITION), include_blank: true %>
+      <%= select_tag 'tent[condition]', options_for_select(Backpack::CONDITION), include_blank: true %>
     </div>
 
     <div class="medium-12 medium-centered columns" id="sleepingbag">
       <h3> Sleepingbags </h3>
 
-      <%= label_tag(:search, "Search by Model Name or Brand") %>
-      <%= text_field_tag('sleepingbag[search]') %>
+      <%= label_tag('Model Name') %>
+      <%= text_field_tag('sleepingbag[name]') %>
+
+      <%= label_tag(:brand) %>
+      <%= text_field_tag('sleepingbag[brand]') %>
 
       <%= label_tag(:temp_rating) %>
       <%= select_tag 'sleepingbag[temp_rating]', options_for_select(50.downto(-40)), include_blank: true %>

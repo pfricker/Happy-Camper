@@ -32,4 +32,8 @@ class Sleepingbag < ActiveRecord::Base
   def self.location_search (location)
     joins(:user).near(location, 150, order: 'distance')
   end
+
+  def self.advanced_search (location, search_params)
+    joins(:user).near(location, 300, order: 'distance').where(search_params)
+  end
 end

@@ -20,6 +20,7 @@ feature 'user registers', %Q{
     fill_in 'First name', with: 'jon'
     fill_in 'Last name', with: 'doe'
     fill_in 'Password', with: 'password'
+    fill_in 'Location', with: 'Boston, MA'
     fill_in 'Password confirmation', with: 'password'
 
     click_button 'Sign up'

@@ -1,11 +1,11 @@
 class Backpack < ActiveRecord::Base
   belongs_to :user
   include PgSearch
-  pg_search_scope :search,
-    against: [:name, :brand],
-    using: {
-      tsearch: { prefix: true }
-    }
+  # pg_search_scope :search,
+  #   against: [:name, :brand],
+  #   using: {
+  #     tsearch: { prefix: true }
+  #   }
 
   geocoded_by :location,
     :latitude => "users.latitude",
@@ -30,5 +30,9 @@ class Backpack < ActiveRecord::Base
 
   def self.location_search (location)
     joins(:user).near(location, 150, order: 'distance')
+  end
+  
+  def self.advanced_search (location, search_params)
+    joins(:user).near(location, 300, order: 'distance').where(search_params)
   end
 end
