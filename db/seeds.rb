@@ -8,7 +8,6 @@
 
   User.create(email: email, password: password, username: username, first_name: first_name, last_name: last_name, location: location)
 end
-puts "#{User.all.count} users were generated"
 
 condition = ["New", "Like New", "Very Good", "Good", "Acceptable", "Seen Better Days"].sample
 pack_size = ["XS", "S", "M", "L", "XL"].sample
@@ -156,6 +155,7 @@ User.all.each do |user|
   end
 end
 
+puts "#{User.all.count} users were generated"
 puts "#{Sleepingbag.all.count} sleepingbags were created"
 puts "#{Backpack.all.count} packs were created"
 puts "#{Tent.all.count} tents were created"
