@@ -17,6 +17,7 @@ gem 'geocoder'
 gem 'rails_12factor', group: :production
 gem 'devise'
 gem 'foundation-rails'
+gem 'httparty'
 
 group :test, :development do
   gem 'dotenv-rails'

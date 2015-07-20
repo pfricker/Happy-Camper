@@ -8,8 +8,8 @@
 
 <div class="row">
   <div class="medium-9 medium-centered text-center columns" id="box">
-    <h3>Find Your Gear</h3>
-    <%= form_tag search_index_path, method: "get" do |f| %>
+    <h3>Find Gear</h3>
+    <%= form_tag search_index_path, method: "get" do %>
       <ul class="inline-list">
         <div class="medium-4 columns float left" id="backpack_button">
           <%= radio_button_tag(:search_category, "Backpack", checked: 'checked') %>
@@ -103,7 +103,26 @@
 
       <%= label_tag(:condtion) %>
       <%= select_tag 'sleepingbag[condition]', options_for_select(Sleepingbag::CONDITION), include_blank: true %>
+<% end %>
     </div>
   </div>
+  <br>
+  <div class="medium-9 medium-centered text-center columns" id="box">
+    <h3> Trip Planner </h3>
+      <%= form_tag trips_path, method: "get" do %>
+
+        <%= text_field_tag(:destination, nil, placeholder: "Enter the Zip Code for Your Destination") %>
+
+        <div class="row">
+          <div class="medium-5 columns float left">
+            <%= date_field :date, :start_date %>
+          </div>
+          <div class="medium-5 columns float right">
+            <%= date_field :date, :end_date %>
+          </div>
+        </div>
+
+        <%= submit_tag "Search", class: "button radius small" %>
+      <% end %>
+  </div>
 </div>
-<% end %>
