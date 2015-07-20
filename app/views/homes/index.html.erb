@@ -42,8 +42,17 @@
       <%= label_tag(:brand) %>
       <%= text_field_tag('backpack[brand]') %>
 
-      <%= label_tag(:capacity) %>
-      <%= select_tag 'backpack[capacity]', options_for_select(15..115), include_blank: true %>
+      <div class="row">
+        <div class="medium-5 columns float left">
+          <%= label_tag("Capacity (min)") %>
+          <%= select_tag 'backpack[capacity]', options_for_select(15..115), include_blank: true %>
+        </div>
+
+        <div class="medium-5 columns float right">
+          <%= label_tag("Capacity (max)") %>
+          <%= select_tag 'backpack[capacity]', options_for_select(15..115), include_blank: true %>
+        </div>
+      </div>
 
       <%= label_tag(:size) %>
       <%= select_tag 'backpack[size]', options_for_select(Backpack::SIZES), include_blank: true %>

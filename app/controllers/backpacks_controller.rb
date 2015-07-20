@@ -1,5 +1,6 @@
 class BackpacksController < ApplicationController
   def index
+    binding.pry
     if params[:location].present? && params[:backpack].present?
       @backpacks = Backpack.advanced_search(params[:location], advanced_params).page params[:page]
     elsif params[:location].present?
