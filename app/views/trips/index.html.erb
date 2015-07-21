@@ -1,1 +1,27 @@
-<%= response %>
+<div class="row">
+  <h2 class="text-center"> Weather Conditions </h2>
+  <h5 class="text-center">(Historical Data pulled from <%= @data["trip"]["period_of_record"]["date_start"]["date"]["year"] %> to <%= @data["trip"]["period_of_record"]["date_end"]["date"]["year"] %>)</h5>
+  <div class="medium-3 text-center columns float left" id="box">
+    <h3> High Temp </h3>
+    <ul>
+      <li> Max: <%= @data["trip"]["temp_high"]["max"]["F"] %> ℉ </li>
+      <li> Avg: <%= @data["trip"]["temp_high"]["avg"]["F"] %> ℉ </li>
+      <li> Min: <%= @data["trip"]["temp_high"]["min"]["F"] %> ℉</li>
+  </div>
+
+  <div class="medium-3 medium-centered text-center columns" id="box">
+    <h3> Low Temp </h3>
+    <ul>
+      <li> Max: <%= @data["trip"]["temp_low"]["max"]["F"] %> ℉ </li>
+      <li> Avg: <%= @data["trip"]["temp_low"]["avg"]["F"] %> ℉ </li>
+      <li> Min: <%= @data["trip"]["temp_low"]["min"]["F"] %> ℉ </li>
+  </div>
+
+  <div class="medium-3 text-center columns float right" id="box">
+    <h3> Precipitation </h3>
+    <ul>
+      <li> Chance of Rain: <%= @data["trip"]["chance_of"]["chanceofrainday"]["percentage"] %>% </li>
+      <li> Chance of Storms: <%= @data["trip"]["chance_of"]["chanceofthunderday"]["percentage"] %>% </li>
+      <li> Chance of Snow: <%= @data["trip"]["chance_of"]["chanceofsnowday"]["percentage"] %>% </li>
+  </div>
+</div>
