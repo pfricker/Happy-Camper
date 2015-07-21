@@ -1,15 +1,19 @@
 class TripsController < ApplicationController
   def index
     response = Geocoder.search(params["destination"])
-    data = response.first.data
-    lat = data["geometry"]["location"]["lat"]
-    lng = data["geometry"]["location"]["lng"]
-    @name = data["formatted_address"]
-    @from = params["date"]["start_date"]
-    @to = params["date"]["end_date"]
-    @data = HTTParty.get("http://api.wunderground.com/api/2d2aff62ce2b475a/planner_#{dates}/q/#{lat},#{lng}.json")
+    if response.empty?
+      redirect_to root_path
+      flash[:notice] = "We weren't able to find that loctaion."
+    else
+      data = response.first.data
+      lat = data["geometry"]["location"]["lat"]
+      lng = data["geometry"]["location"]["lng"]
+      @name = data["formatted_address"]
+      @from = params["date"]["start_date"]
+      @to = params["date"]["end_date"]
+      @data = HTTParty.get("http://api.wunderground.com/api/2d2aff62ce2b475a/planner_#{dates}/q/#{lat},#{lng}.json")
+    end
   end
-
 
   private
 

@@ -1,8 +1,8 @@
 <div class="row">
-  <h2 class="text-center"> Weather Conditions for <%= @name %> </h2>
-  <div class="medium-5 medium-centered columns" id="box">
-    <h3 class="text-center"> <%= @from %> to <%= @to %> </h3>
-    <h5 class="text-center">(Historical Data pulled from <%= @data["trip"]["period_of_record"]["date_start"]["date"]["year"] %> to <%= @data["trip"]["period_of_record"]["date_end"]["date"]["year"] %>)</h5>
+  <h2 class="text-center"> <%= @name %> </h2>
+  <div class="medium-7 medium-centered columns" id="box">
+    <h3 class="text-center"> <%= @data["trip"]["title"] %> </h3>
+    <h5 class="text-center">(Data pulled from <%= @data["trip"]["period_of_record"]["date_start"]["date"]["year"] %> to <%= @data["trip"]["period_of_record"]["date_end"]["date"]["year"] %>)</h5>
   </div>
   <br>
   <ul class="small-block-grid-1 medium-block-grid-3">

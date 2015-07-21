@@ -111,14 +111,14 @@
     <h3> Trip Planner </h3>
       <%= form_tag trips_path, method: "get" do %>
 
-        <%= text_field_tag(:destination, nil, placeholder: "Enter City & State or Zip for Your Destination") %>
+        <%= text_field_tag(:destination, nil, placeholder: "Enter City & State or Zip for Your Destination", required: true) %>
 
         <div class="row">
           <div class="medium-5 columns float left">
-            <%= date_field :date, :start_date %>
+            <%= date_field :date, :start_date, required: true %>
           </div>
           <div class="medium-5 columns float right">
-            <%= date_field :date, :end_date %>
+            <%= date_field :date, :end_date, required: true %>
           </div>
         </div>
 
