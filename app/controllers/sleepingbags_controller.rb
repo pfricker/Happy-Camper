@@ -7,6 +7,8 @@ class SleepingbagsController < ApplicationController
     else
       @sleepingbags = Sleepingbag.all.page params[:page]
     end
+
+    # SearchFilter.new(params).filter
   end
 
   def show

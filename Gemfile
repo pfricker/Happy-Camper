@@ -18,6 +18,7 @@ gem 'rails_12factor', group: :production
 gem 'devise'
 gem 'foundation-rails'
 gem 'httparty'
+gem 'area'
 
 group :test, :development do
   gem 'dotenv-rails'
