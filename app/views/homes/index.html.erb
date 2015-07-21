@@ -8,8 +8,8 @@
 
 <div class="row">
   <div class="medium-9 medium-centered text-center columns" id="box">
-    <h3>Find Your Gear</h3>
-    <%= form_tag search_index_path, method: "get" do |f| %>
+    <h3>Find Gear</h3>
+    <%= form_tag search_index_path, method: "get" do %>
       <ul class="inline-list">
         <div class="medium-4 columns float left" id="backpack_button">
           <%= radio_button_tag(:search_category, "Backpack", checked: 'checked') %>
@@ -42,8 +42,17 @@
       <%= label_tag(:brand) %>
       <%= text_field_tag('backpack[brand]') %>
 
-      <%= label_tag(:capacity) %>
-      <%= select_tag 'backpack[capacity]', options_for_select(15..115), include_blank: true %>
+      <div class="row">
+        <div class="medium-5 columns float left">
+          <%= label_tag("Capacity (min)") %>
+          <%= select_tag 'backpack[capacity]', options_for_select(15..115), include_blank: true %>
+        </div>
+
+        <div class="medium-5 columns float right">
+          <%= label_tag("Capacity (max)") %>
+          <%= select_tag 'backpack[capacity]', options_for_select(15..115), include_blank: true %>
+        </div>
+      </div>
 
       <%= label_tag(:size) %>
       <%= select_tag 'backpack[size]', options_for_select(Backpack::SIZES), include_blank: true %>
@@ -94,7 +103,26 @@
 
       <%= label_tag(:condtion) %>
       <%= select_tag 'sleepingbag[condition]', options_for_select(Sleepingbag::CONDITION), include_blank: true %>
+<% end %>
     </div>
   </div>
+  <br>
+  <div class="medium-9 medium-centered text-center columns" id="box">
+    <h3> Trip Planner </h3>
+      <%= form_tag trips_path, method: "get" do %>
+
+        <%= text_field_tag(:destination, nil, placeholder: "Enter City & State or Zip for Your Destination") %>
+
+        <div class="row">
+          <div class="medium-5 columns float left">
+            <%= date_field :date, :start_date %>
+          </div>
+          <div class="medium-5 columns float right">
+            <%= date_field :date, :end_date %>
+          </div>
+        </div>
+
+        <%= submit_tag "Search", class: "button radius small" %>
+      <% end %>
+  </div>
 </div>
-<% end %>

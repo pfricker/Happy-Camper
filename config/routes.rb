@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root 'homes#index'
   devise_for :users
 
+  resources :trips, only: [:index]
   resources :search, only: [:index]
   resources :users, only: [:show]
   resources :backpacks
