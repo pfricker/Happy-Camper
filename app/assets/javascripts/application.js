@@ -20,7 +20,7 @@ $(function(){ $(document).foundation(); });
 src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"
 
 $(document).ready(function(){
-    $("#flip").click(function(){
+    $("#search_button").click(function(){
         $("#panel").slideToggle("slow");
     });
 });
@@ -42,3 +42,9 @@ $(document).ready(function(){
     $("#sleepingbag").show();;
   });
 });
+
+// $('#radio_buttons').on('change', function() {
+//   if (value == "Backpack") {
+//     .joins(:user).near(location, 150, order: 'distance')
+//   }
+// }
