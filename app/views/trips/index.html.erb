@@ -28,9 +28,40 @@
         <h3> Precipitation </h3>
         <ul>
           <li> Chance of Rain: <%= @data["trip"]["chance_of"]["chanceofrainday"]["percentage"] %>% </li>
-          <li> Chance of Storms: <%= @data["trip"]["chance_of"]["chanceofthunderday"]["percentage"] %>% </li>
+          <li> Chance of Thunderstorms: <%= @data["trip"]["chance_of"]["chanceofthunderday"]["percentage"] %>% </li>
           <li> Chance of Snow: <%= @data["trip"]["chance_of"]["chanceofsnowday"]["percentage"] %>% </li>
         </ul>
       </div></li>
   </ul>
+</div>
+
+<div class="row">
+
+  <div class="medium-7 medium-centered columns" id="box">
+    <h3> Here is Some Gear Appropriate for your Trip <br> from users near your destination </h3> 
+  </div>
+  <ul class="small-block-grid-1 medium-block-grid-3">
+  <li><div class="text-center" id="box">
+    <ul>
+      <% @sleepingbags.each do |sleepingbag| %>
+        <li> <%= link_to sleepingbag.name, sleepingbag %> : <%= sleepingbag.user.username %></li>
+      <% end %>
+    </ul>
+  </div></li>
+
+  <li><div class="text-center" id="box">
+    <ul>
+      <% @backpacks.each do |backpack| %>
+        <li> <%= link_to backpack.name, backpack %> : <%= backpack.user.username %></li>
+      <% end %>
+    </ul>
+  </div></li>
+
+  <li><div class="text-center" id="box">
+    <ul>
+      <% @tent.each do |tent| %>
+        <li> <%= link_to tent.name, tent %> : <%= tent.user.username %></li>
+      <% end %>
+    </ul>
+  </div></li>
 </div>

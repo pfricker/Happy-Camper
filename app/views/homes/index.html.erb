@@ -115,16 +115,23 @@
   <br>
   <div class="medium-9 medium-centered text-center columns" id="box">
     <h3> Trip Planner </h3>
+    <h6> Not sure what the weather will be like where you're going? <br> Let our Trip Planner help you out! </h6>
       <%= form_tag trips_path, method: "get" do %>
 
         <%= text_field_tag(:destination, nil, placeholder: "Enter City & State or Zip for Your Destination", required: true) %>
 
         <div class="row">
-          <div class="medium-5 columns float left">
-            <%= date_field :date, :start_date, required: true %>
+          <div class="medium-3 columns float left">
+            <%= label_tag("Participants") %>
+            <%= select_tag :people, options_for_select(1..8), required: true %>
           </div>
-          <div class="medium-5 columns float right">
+          <div class="medium-4 columns float right">
+            <%= label_tag("End Date") %>
             <%= date_field :date, :end_date, required: true %>
+          </div>
+          <div class="medium-4 columns float right">
+            <%= label_tag("Start Date") %>
+            <%= date_field :date, :start_date, required: true %>
           </div>
         </div>
 

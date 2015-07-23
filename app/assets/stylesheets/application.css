@@ -44,7 +44,7 @@
 body {
   background-color: #586581;
   background-image: url("hiker2.jpg");
-  background-size: 100% auto;
+  background-size: cover;
   background-repeat: no-repeat;
 }
 
