@@ -1,8 +1,4 @@
-<div class="row">
-  <div class="medium-12 medium-centered text-center columns">
-    <h1>WELCOME TO THE HAPPY CAMPER GEAR EXCHANGE</h1>
-  </div>
-</div>
+<h1 class="text-center">WELCOME TO THE HAPPY CAMPER GEAR EXCHANGE</h1>
 
 <br>
 
@@ -115,7 +111,7 @@
   <br>
   <div class="medium-9 medium-centered text-center columns" id="box">
     <h3> Trip Planner </h3>
-    <h6> Not sure what the weather will be like where you're going? <br> Let our Trip Planner help you out! </h6>
+    <h5> Not sure what the weather will be like where you're going? <br> Let our Trip Planner help you out! </h5>
       <%= form_tag trips_path, method: "get" do %>
 
         <%= text_field_tag(:destination, nil, placeholder: "Enter City & State or Zip for Your Destination", required: true) %>

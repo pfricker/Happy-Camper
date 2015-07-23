@@ -6,11 +6,11 @@ class TripsController < ApplicationController
     else
       @name = location["formatted_address"]
       @data = HTTParty.get("http://api.wunderground.com/api/2d2aff62ce2b475a/planner_#{dates}/q/#{lat},#{lng}.json")
+      @backpacks =  Search.new(backpack_params).filter.page params[:page]
+      @tents =  Search.new(tent_params).filter.page params[:page]
+      @sleepingbags =  Search.new(sleepingbag_params).filter.page params[:page]
     end
 
-    @backpacks =  Search.new(backpack_params).filter.page params[:page]
-    @tents =  Search.new(tent_params).filter.page params[:page]
-    @sleepingbags =  Search.new(sleepingbag_params).filter.page params[:page]
   end
 
   private

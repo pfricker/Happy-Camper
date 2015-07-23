@@ -17,10 +17,10 @@ class BackpacksController < ApplicationController
 
   def create
     @backpack = Backpack.new(backpack_params)
-    @backpack.sizer = current_sizer
+    @backpack.user = current_user
     if @backpack.save
       flash[:notice] = "Your backpack has been added."
-      redirect_to sizer_path(current_sizer.id)
+      redirect_to user_path(current_user.id)
     else
       render :new
     end

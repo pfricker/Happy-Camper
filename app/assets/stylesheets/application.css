@@ -61,12 +61,7 @@ a {
   color: black;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1, h2, h3, h4, h5, h6 {
   text-transform: uppercase;
 }
 
@@ -75,4 +70,8 @@ h6 {
   color: white;
   font-family: KGFallForYou;
   text-transform: uppercase;
+}
+
+.off-canvas-wrap, .off-canvas-wrap > .inner-wrap {
+  min-height: 100vh;
 }
