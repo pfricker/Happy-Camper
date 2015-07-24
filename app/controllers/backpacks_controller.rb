@@ -2,6 +2,7 @@ class BackpacksController < ApplicationController
   def index
     if params[:location].present?
       @backpacks = Search.new(params).filter.page params[:page]
+      binding.pry
     else
       @backpacks = Backpack.all.page params[:page]
     end
@@ -41,6 +42,15 @@ class BackpacksController < ApplicationController
   end
 
   private
+
+  def locations(items)
+    locations = []
+    items.each do |item|
+      array = [item.name, item.user.username, item.user.latitude, item.user.longitude]
+      locations << array
+    end
+    locations
+  end
 
   def backpack_params
     params.require(:backpack).permit(
