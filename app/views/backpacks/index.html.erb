@@ -5,7 +5,7 @@
 </div>
 
 <div class="row">
-  <div class="medium-4 columns" id="box">
+  <div class="medium-4 columns float-left" id="box">
     <ul>
       <% @backpacks.each do |backpack| %>
         <li> <%= link_to backpack.name, backpack %> : <%= backpack.user.username %></li>
