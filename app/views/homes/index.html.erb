@@ -1,8 +1,4 @@
-<div class="row">
-  <div class="medium-12 medium-centered text-center columns">
-    <h1>WELCOME TO THE HAPPY CAMPER GEAR EXCHANGE</h1>
-  </div>
-</div>
+<h1 class="text-center">WELCOME TO THE HAPPY CAMPER GEAR EXCHANGE</h1>
 
 <br>
 
@@ -24,7 +20,16 @@
           <%= label_tag(:search_category, "Sleepingbags") %>
         </div>
       </ul>
-      <%= text_field_tag(:location, nil, placeholder: "Search by City & State, or Zip Code") %>
+      <div class="row">
+        <div class="medium-9 text-left columns float left">
+          <%= label_tag "Enter Your Location" %>
+          <%= text_field_tag(:location, nil, placeholder: "Search by City & State, or Zip Code", required: true) %>
+        </div>
+        <div class="medium-3 columns float left">
+          <%= label_tag "Search Radius (miles)" %>
+          <%= select_tag :radius, options_for_select([5, 10, 20, 50, 100, 300], selected: 100) %>
+      </div>
+      </div>
       <%= submit_tag "Search", class: "button radius small" %>
 
   </div>
@@ -36,21 +41,17 @@
     <div class="medium-12 medium-centered columns" id="backpack">
       <h3> Backpacks </h3>
 
-      <%= label_tag('Model Name') %>
-      <%= text_field_tag('backpack[name]') %>
-
-      <%= label_tag(:brand) %>
-      <%= text_field_tag('backpack[brand]') %>
+      <%= text_field_tag('backpack[search]', nil, placeholder: "Seach by Model Name or Brand") %>
 
       <div class="row">
         <div class="medium-5 columns float left">
           <%= label_tag("Capacity (min)") %>
-          <%= select_tag 'backpack[capacity]', options_for_select(15..115), include_blank: true %>
+          <%= select_tag 'backpack[capacity][min]', options_for_select(15..115), include_blank: true %>
         </div>
 
         <div class="medium-5 columns float right">
           <%= label_tag("Capacity (max)") %>
-          <%= select_tag 'backpack[capacity]', options_for_select(15..115), include_blank: true %>
+          <%= select_tag 'backpack[capacity][max]', options_for_select(15..115), include_blank: true %>
         </div>
       </div>
 
@@ -67,11 +68,7 @@
     <div class="medium-12 medium-centered columns" id="tent">
       <h3> Tents </h3>
 
-      <%= label_tag('Model Name') %>
-      <%= text_field_tag('tent[name]') %>
-
-      <%= label_tag(:brand) %>
-      <%= text_field_tag('tent[brand]') %>
+      <%= text_field_tag('tent[search]', nil, placeholder: "Seach by Model Name or Brand") %>
 
       <%= label_tag(:capacity) %>
       <%= select_tag 'tent[capacity]', options_for_select(1..8), include_blank: true %>
@@ -86,14 +83,19 @@
     <div class="medium-12 medium-centered columns" id="sleepingbag">
       <h3> Sleepingbags </h3>
 
-      <%= label_tag('Model Name') %>
-      <%= text_field_tag('sleepingbag[name]') %>
+      <%= text_field_tag('tent[search]', nil, placeholder: "Seach by Model Name or Brand") %>
 
-      <%= label_tag(:brand) %>
-      <%= text_field_tag('sleepingbag[brand]') %>
+      <div class="row">
+        <div class="medium-5 columns float left">
+          <%= label_tag("Temperature Rating (min)") %>
+          <%= select_tag 'sleepingbag[temp_rating][min]', options_for_select(50.downto(-40)), include_blank: true %>
+        </div>
 
-      <%= label_tag(:temp_rating) %>
-      <%= select_tag 'sleepingbag[temp_rating]', options_for_select(50.downto(-40)), include_blank: true %>
+        <div class="medium-5 columns float right">
+          <%= label_tag("Temperature Rating (max)") %>
+          <%= select_tag 'sleepingbag[temp_rating][max]', options_for_select(50.downto(-40)), include_blank: true %>
+        </div>
+      </div>
 
       <%= label_tag(:size) %>
       <%= select_tag 'sleepingbag[size]', options_for_select(Sleepingbag::SIZES), include_blank: true %>
@@ -109,16 +111,23 @@
   <br>
   <div class="medium-9 medium-centered text-center columns" id="box">
     <h3> Trip Planner </h3>
+    <h5> Not sure what the weather will be like where you're going? <br> Let our Trip Planner help you out! </h5>
       <%= form_tag trips_path, method: "get" do %>
 
-        <%= text_field_tag(:destination, nil, placeholder: "Enter City & State or Zip for Your Destination") %>
+        <%= text_field_tag(:destination, nil, placeholder: "Enter City & State or Zip for Your Destination", required: true) %>
 
         <div class="row">
-          <div class="medium-5 columns float left">
-            <%= date_field :date, :start_date %>
+          <div class="medium-3 columns float left">
+            <%= label_tag("Participants") %>
+            <%= select_tag :people, options_for_select(1..8), required: true %>
           </div>
-          <div class="medium-5 columns float right">
-            <%= date_field :date, :end_date %>
+          <div class="medium-4 columns float right">
+            <%= label_tag("End Date") %>
+            <%= date_field :date, :end_date, required: true %>
+          </div>
+          <div class="medium-4 columns float right">
+            <%= label_tag("Start Date") %>
+            <%= date_field :date, :start_date, required: true %>
           </div>
         </div>
 

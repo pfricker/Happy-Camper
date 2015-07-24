@@ -1,10 +1,7 @@
 class BackpacksController < ApplicationController
   def index
-    binding.pry
-    if params[:location].present? && params[:backpack].present?
-      @backpacks = Backpack.advanced_search(params[:location], advanced_params).page params[:page]
-    elsif params[:location].present?
-      @backpacks = Backpack.advanced_search(params[:location])
+    if params[:location].present?
+      @backpacks = Search.new(params).filter.page params[:page]
     else
       @backpacks = Backpack.all.page params[:page]
     end
@@ -20,10 +17,10 @@ class BackpacksController < ApplicationController
 
   def create
     @backpack = Backpack.new(backpack_params)
-    @backpack.sizer = current_sizer
+    @backpack.user = current_user
     if @backpack.save
       flash[:notice] = "Your backpack has been added."
-      redirect_to sizer_path(current_sizer.id)
+      redirect_to user_path(current_user.id)
     else
       render :new
     end
@@ -43,7 +40,6 @@ class BackpacksController < ApplicationController
     end
   end
 
-
   private
 
   def backpack_params
@@ -56,23 +52,5 @@ class BackpacksController < ApplicationController
       :gender,
       :image
     )
-  end
-
-  def advanced_params
-    values = Hash.new
-
-    values[:name] = params[:backpack][:name] if params[:backpack][:name].present?
-
-    values[:brand] = params[:backpack][:brand] if params[:backpack][:brand].present?
-
-    values[:capacity] = params[:backpack][:capacity] if params[:backpack][:capacity].present?
-
-    values[:size] = params[:backpack][:size] if params[:backpack][:size].present?
-
-    values[:gender] = params[:backpack][:gender] if params[:backpack][:gender].present?
-
-    values[:condition] = params[:backpack][:condition] if params[:backpack][:condition].present?
-
-    values
   end
 end

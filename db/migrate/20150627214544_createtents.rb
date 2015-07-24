@@ -4,7 +4,7 @@ class Createtents < ActiveRecord::Migration
       t.belongs_to :user, index: true
       t.string :name, null: false
       t.string :brand
-      t.string :capacity
+      t.integer :capacity
       t.string :type
       t.string :condition
 

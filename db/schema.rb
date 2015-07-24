@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(version: 20150716154021) do
     t.integer  "user_id"
     t.string   "name",               null: false
     t.string   "brand"
-    t.string   "capacity"
+    t.integer  "capacity"
     t.string   "use"
     t.string   "condition"
     t.datetime "created_at",         null: false
