@@ -2,9 +2,18 @@ class BackpacksController < ApplicationController
   def index
     if params[:location].present?
       @backpacks = Search.new(params).filter.page params[:page]
-      binding.pry
+      @pins = locations(@backpacks)
+      respond_to do |format|
+        format.html
+        format.json { render json: @pins }
+      end
     else
       @backpacks = Backpack.all.page params[:page]
+      @pins = locations(@backpacks)
+      respond_to do |format|
+        format.html
+        format.json { render json: @pins }
+      end
     end
   end
 

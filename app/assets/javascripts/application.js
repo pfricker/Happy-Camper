@@ -44,6 +44,7 @@ $(document).ready(function(){
 });
 
 
+
 jQuery(function($) {
     // Asynchronously Load the map API
     var script = document.createElement('script');
@@ -52,6 +53,15 @@ jQuery(function($) {
 });
 
 function initialize() {
+  $.ajax({
+    method: "GET",
+    url: "/backpacks",
+    dataType: "json",
+  })
+  .done(function(pins) {
+    var markers = pins;
+    debugger
+
     var map;
     var bounds = new google.maps.LatLngBounds();
     var mapOptions = {
@@ -63,10 +73,7 @@ function initialize() {
     map.setTilt(45);
 
     // Multiple Markers
-    var markers = [
-        ['London Eye, London', 51.503454,-0.119562],
-        ['Palace of Westminster, London', 51.499633,-0.124755]
-    ];
+
 
     // Info Window Content
     var infoWindowContent = [
@@ -109,5 +116,6 @@ function initialize() {
         this.setZoom(14);
         google.maps.event.removeListener(boundsListener);
     });
+  });  
 
 }

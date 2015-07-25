@@ -19,6 +19,7 @@ gem 'devise'
 gem 'foundation-rails'
 gem 'httparty'
 gem 'area'
+gem 'gmaps4rails'
 
 group :test, :development do
   gem 'dotenv-rails'
