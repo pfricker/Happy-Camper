@@ -25,7 +25,7 @@ class TripsController < ApplicationController
 
      {"search_category"=>"Sleepingbag",
      "location"=>"#{params[:location]}",
-     "radius"=>"100",
+     "radius"=>"20",
      "backpack"=>{"search"=>"", "capacity"=>{"min"=>"", "max"=>""}, "size"=>"", "gender"=>"", "condtion"=>""},
      "tent"=>{"search"=>"", "capacity"=>"", "use"=>"", "condition"=>""},
      "sleepingbag"=>{"temp_rating"=>{"min"=>"#{lower_limit}", "max"=>"#{upper_limit}"}, "size"=>"", "fill"=>"", "condition"=>""}
@@ -61,7 +61,7 @@ class TripsController < ApplicationController
   def backpack_params
     {"search_category"=>"Backpack",
      "location"=>"#{params[:location]}",
-     "radius"=>"100",
+     "radius"=>"20",
      "backpack"=>{"search"=>"", "capacity"=>{"min"=>"#{min_pack_size}", "max"=>"#{max_pack_size}"}, "size"=>"", "gender"=>"", "condtion"=>""},
      "tent"=>{"search"=>"", "capacity"=>"", "use"=>"", "condition"=>""},
      "sleepingbag"=>{"temp_rating"=>{"min"=>"", "max"=>""}, "size"=>"", "fill"=>"", "condition"=>""}
@@ -71,7 +71,7 @@ class TripsController < ApplicationController
   def tent_params
     {"search_category"=>"Tent",
      "location"=>"#{params[:location]}",
-     "radius"=>"100",
+     "radius"=>"20",
      "backpack"=>{"search"=>"", "capacity"=>{"min"=>"", "max"=>""}, "size"=>"", "gender"=>"", "condtion"=>""},
      "tent"=>{"search"=>"", "capacity"=>"#{params[:people]}", "use"=>"", "condition"=>""},
      "sleepingbag"=>{"temp_rating"=>{"min"=>"", "max"=>""}, "size"=>"", "fill"=>"", "condition"=>""}
