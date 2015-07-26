@@ -2,8 +2,10 @@ class BackpacksController < ApplicationController
   def index
     if params[:location].present?
       @backpacks = Search.new(params).filter.page params[:page]
+      locations(@backpacks)
     else
       @backpacks = Backpack.all.page params[:page]
+      locations(@backpacks)
     end
   end
 
@@ -41,6 +43,14 @@ class BackpacksController < ApplicationController
   end
 
   private
+
+  def locations(items)
+    @hash = Gmaps4rails.build_markers(items) do |item, marker|
+      marker.infowindow %{ #{item.brand} #{item.name} <br> from: #{item.user.username}}
+      marker.lat item.user.latitude
+      marker.lng item.user.longitude
+    end
+  end
 
   def backpack_params
     params.require(:backpack).permit(

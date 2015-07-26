@@ -14,11 +14,10 @@
 //= require jquery_ujs
 //= require foundation
 //= require_tree .
+//= require underscore
+//= require gmaps/google
 
 $(function(){ $(document).foundation(); });
-
-src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"
-src="https://maps.googleapis.com/maps/api/js"
 
 $(document).ready(function(){
     $("#search_button").click(function(){

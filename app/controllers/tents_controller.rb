@@ -2,8 +2,10 @@ class TentsController < ApplicationController
   def index
     if params[:location].present?
       @tents = Search.new(params).filter.page params[:page]
+      locations(@tents)
     else
       @tents = Tent.all.page params[:page]
+      locations(@tents)
     end
   end
 
@@ -41,6 +43,14 @@ class TentsController < ApplicationController
   end
 
   private
+
+  def locations(items)
+    @hash = Gmaps4rails.build_markers(items) do |item, marker|
+      marker.infowindow %{ #{item.brand} #{item.name} <br> from: #{item.user.username}}
+      marker.lat item.user.latitude
+      marker.lng item.user.longitude
+    end
+  end
 
   def tent_params
     params.require(:tent).permit(:name, :brand, :capacity, :use, :condition, :image)
