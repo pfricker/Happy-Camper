@@ -1,4 +1,4 @@
-1000.times do
+500.times do
   email = Faker::Internet.safe_email
   password = Faker::Internet.password
   username = Faker::Internet.user_name + "_#{rand(99999)}"

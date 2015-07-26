@@ -2,8 +2,10 @@ class SleepingbagsController < ApplicationController
   def index
     if params[:location].present?
       @sleepingbags = Search.new(params).filter.page params[:page]
+      locations(@sleepingbags)
     else
       @sleepingbags = Sleepingbag.all.page params[:page]
+      locations(@sleepingbags)
     end
 
   end
@@ -43,6 +45,14 @@ class SleepingbagsController < ApplicationController
 
 
   private
+
+  def locations(items)
+    @hash = Gmaps4rails.build_markers(items) do |item, marker|
+      marker.infowindow %{ #{item.brand} #{item.name} <br> from: #{item.user.username}}
+      marker.lat item.user.latitude
+      marker.lng item.user.longitude
+    end
+  end
 
   def sleepingbag_params
     params.require(:sleepingbag).permit(:name, :brand, :temp_rating, :size, :condition, :fill, :image)
