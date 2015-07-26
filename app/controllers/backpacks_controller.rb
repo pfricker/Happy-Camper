@@ -2,18 +2,10 @@ class BackpacksController < ApplicationController
   def index
     if params[:location].present?
       @backpacks = Search.new(params).filter.page params[:page]
-      @pins = locations(@backpacks)
-      respond_to do |format|
-        format.html
-        format.json { render json: @pins }
-      end
+      locations(@backpacks)
     else
       @backpacks = Backpack.all.page params[:page]
-      @pins = locations(@backpacks)
-      respond_to do |format|
-        format.html
-        format.json { render json: @pins }
-      end
+      locations(@backpacks)
     end
   end
 
@@ -53,12 +45,11 @@ class BackpacksController < ApplicationController
   private
 
   def locations(items)
-    locations = []
-    items.each do |item|
-      array = [item.name, item.user.username, item.user.latitude, item.user.longitude]
-      locations << array
+    @hash = Gmaps4rails.build_markers(items) do |item, marker|
+      marker.infowindow %{ #{item.brand} #{item.name} <br> from: #{item.user.username}}
+      marker.lat item.user.latitude
+      marker.lng item.user.longitude
     end
-    locations
   end
 
   def backpack_params

@@ -20,6 +20,7 @@ gem 'foundation-rails'
 gem 'httparty'
 gem 'area'
 gem 'gmaps4rails'
+gem 'underscore-rails'
 
 group :test, :development do
   gem 'dotenv-rails'
