@@ -4,6 +4,7 @@ class TripsController < ApplicationController
       redirect_to root_path
       flash[:notice] = "We weren't able to find that loctaion."
     else
+      binding.pry
       @name = location["formatted_address"]
       @data = HTTParty.get("http://api.wunderground.com/api/#{ENV['WUNDERGROUND_API_KEY']}/planner_#{dates}/q/#{lat},#{lng}.json")
       @backpacks =  Search.new(backpack_params).filter.page params[:page]
@@ -24,8 +25,8 @@ class TripsController < ApplicationController
     end
 
      {"search_category"=>"Sleepingbag",
-     "location"=>"#{params[:location]}",
-     "radius"=>"20",
+     "location"=>"#{params[:destination]}",
+     "radius"=>"100",
      "backpack"=>{"search"=>"", "capacity"=>{"min"=>"", "max"=>""}, "size"=>"", "gender"=>"", "condtion"=>""},
      "tent"=>{"search"=>"", "capacity"=>"", "use"=>"", "condition"=>""},
      "sleepingbag"=>{"temp_rating"=>{"min"=>"#{lower_limit}", "max"=>"#{upper_limit}"}, "size"=>"", "fill"=>"", "condition"=>""}
@@ -43,8 +44,10 @@ class TripsController < ApplicationController
       75
     elsif duration <= 8 && duration >= 4
       55
-    elsif duration < 4
+    elsif duration < 4 && duration > 2
       40
+    else
+      35
     end
   end
 
@@ -53,15 +56,17 @@ class TripsController < ApplicationController
       110
     elsif duration <= 8 && duration >= 4
       85
-    elsif duration < 4
+    elsif duration < 4 && duration > 2
       65
+    else
+      50
     end
   end
 
   def backpack_params
     {"search_category"=>"Backpack",
-     "location"=>"#{params[:location]}",
-     "radius"=>"20",
+     "location"=>"#{params[:destination]}",
+     "radius"=>"100",
      "backpack"=>{"search"=>"", "capacity"=>{"min"=>"#{min_pack_size}", "max"=>"#{max_pack_size}"}, "size"=>"", "gender"=>"", "condtion"=>""},
      "tent"=>{"search"=>"", "capacity"=>"", "use"=>"", "condition"=>""},
      "sleepingbag"=>{"temp_rating"=>{"min"=>"", "max"=>""}, "size"=>"", "fill"=>"", "condition"=>""}
@@ -70,8 +75,8 @@ class TripsController < ApplicationController
 
   def tent_params
     {"search_category"=>"Tent",
-     "location"=>"#{params[:location]}",
-     "radius"=>"20",
+     "location"=>"#{params[:destination]}",
+     "radius"=>"100",
      "backpack"=>{"search"=>"", "capacity"=>{"min"=>"", "max"=>""}, "size"=>"", "gender"=>"", "condtion"=>""},
      "tent"=>{"search"=>"", "capacity"=>"#{params[:people]}", "use"=>"", "condition"=>""},
      "sleepingbag"=>{"temp_rating"=>{"min"=>"", "max"=>""}, "size"=>"", "fill"=>"", "condition"=>""}
