@@ -4,7 +4,6 @@ class TripsController < ApplicationController
       redirect_to root_path
       flash[:notice] = "We weren't able to find that loctaion."
     else
-      binding.pry
       @name = location["formatted_address"]
       @data = HTTParty.get("http://api.wunderground.com/api/#{ENV['WUNDERGROUND_API_KEY']}/planner_#{dates}/q/#{lat},#{lng}.json")
       @backpacks =  Search.new(backpack_params).filter.page params[:page]
