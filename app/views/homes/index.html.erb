@@ -30,7 +30,7 @@
           <%= select_tag :radius, options_for_select([5, 10, 20, 50, 100, 300], selected: 100) %>
       </div>
       </div>
-      <%= submit_tag "Search", class: "button radius small" %>
+      <%= submit_tag "Find Gear", class: "button radius small" %>
 
   </div>
 
@@ -83,7 +83,7 @@
     <div class="medium-12 medium-centered columns" id="sleepingbag">
       <h3> Sleepingbags </h3>
 
-      <%= text_field_tag('tent[search]', nil, placeholder: "Seach by Model Name or Brand") %>
+      <%= text_field_tag('sleepingbag[search]', nil, placeholder: "Seach by Model Name or Brand") %>
 
       <div class="row">
         <div class="medium-5 columns float left">

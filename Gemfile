@@ -27,6 +27,7 @@ group :test, :development do
   gem 'pry-rails'
   gem 'web-console', '~> 2.0'
   gem 'spring'
+  gem 'selenium-webdriver'
   gem 'rspec-rails'
   gem 'capybara'
   gem 'launchy'

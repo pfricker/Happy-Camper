@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   has_many :sleepingbags
 
   geocoded_by :location
-  after_validation :geocode
+  after_validation :geocode, unless: ->(obj){ obj.latitude.present? }
 
   has_attached_file :avatar, styles: {
     large: "400x400>",

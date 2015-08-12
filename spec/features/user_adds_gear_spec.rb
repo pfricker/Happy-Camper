@@ -2,7 +2,6 @@ require 'rails_helper'
 
 feature 'User adds a new item of gear' do
   let(:user) { FactoryGirl.create(:user)}
-
   before do
     visit root_path
     sign_in_as(user)

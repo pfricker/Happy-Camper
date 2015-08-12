@@ -6,9 +6,11 @@ FactoryGirl.define do
     sequence(:username){ |n| "user #{n}" }
     sequence(:first_name){ |n| "John #{n}" }
     sequence(:last_name){ |n| "Doe #{n}" }
-    location '02138'
+    location '02474'
     password 'password'
     password_confirmation 'password'
+    latitude 42.4232158
+    longitude -71.1537637
   end
 
   factory :backpack do
